@@ -254,6 +254,94 @@ textarea.inp{min-height:96px;resize:vertical}
 .cost-check{font-size:14px;margin-top:6px}
 .cost-check.warn{color:var(--warn)}
 
+/* 流程進度軌（三畫面共用） */
+.ftrack{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:12px 16px 14px;margin-bottom:16px}
+.ft-head{display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap}
+.ft-title{font-weight:700;color:var(--blue);font-size:15px;flex:none}
+.ft-now{font-size:14.5px;min-width:0}
+.ft-now b{color:var(--blue)}
+.ft-now.ret b{color:var(--warn)}
+.ft-legend{margin-left:auto;display:flex;gap:4px 12px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.ft-legend span{display:inline-flex;align-items:center;gap:5px}
+.ft-legend .fn-ic{width:16px;height:16px;font-size:10px;border-width:1.5px}
+.ft-toggle{display:none}
+.ft-nodes{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.ft-nodes li{min-width:0;position:relative;display:flex}
+.ft-nodes li + li::before{content:"";position:absolute;left:-8px;top:21px;width:8px;height:2px;background:var(--line)}
+.fnode{width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;border:1.5px solid var(--line);border-radius:10px;background:#fff;padding:8px 9px;cursor:pointer;min-height:44px;color:var(--ink);font-size:13px}
+.fnode:hover{border-color:var(--sky)}
+.fnode[aria-expanded="true"]{border-color:var(--blue);box-shadow:0 0 0 3px var(--pale)}
+.fn-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fn-ic{flex:none;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid #B9C2CB;background:#fff;color:#fff;line-height:1;position:relative}
+.fn-id{font-weight:700;font-size:13px;color:var(--sky)}
+.fn-name{font-weight:700;font-size:13.5px;line-height:1.35}
+.fn-meta{font-size:12px;color:var(--muted);line-height:1.35}
+.fn-cur{display:inline-block;font-size:11.5px;font-weight:700;color:var(--blue);background:var(--pale);border-radius:999px;padding:0 7px;white-space:nowrap}
+[data-fstate="done"] .fn-ic,.fn-ic.done{background:var(--green);border-color:var(--green)}
+[data-fstate="doing"] .fn-ic,.fn-ic.doing{background:var(--blue);border-color:var(--blue)}
+[data-fstate="doing"] .fn-ic::after,.fn-ic.doing::after{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
+[data-fstate="skip"] .fn-ic,.fn-ic.skip{border-color:#CDD4DB;background:linear-gradient(135deg,#fff 44%,#CDD4DB 44%,#CDD4DB 56%,#fff 56%)}
+[data-fstate="returned"] .fn-ic,.fn-ic.returned{background:var(--warn);border-color:var(--warn)}
+.fnode[data-fstate="done"]{border-color:#A9DCBD;background:#F5FBF7}
+.fnode[data-fstate="done"] .fn-meta{color:#00692C}
+.fnode[data-fstate="doing"]{border-color:var(--blue);background:var(--pale2)}
+.fnode[data-fstate="doing"] .fn-meta{color:var(--blue);font-weight:600}
+.fnode[data-fstate="skip"]{border-style:dashed;background:#F8F9FA;color:#8A949E}
+.fnode[data-fstate="skip"] .fn-id,.fnode[data-fstate="skip"] .fn-meta{color:#9AA3AC}
+.fnode[data-fstate="returned"]{border-color:#EBB5A8;background:var(--warn-bg)}
+.fnode[data-fstate="returned"] .fn-meta{color:var(--warn);font-weight:600}
+.fst{display:inline-block;font-size:12.5px;font-weight:700;border-radius:999px;padding:1px 10px;white-space:nowrap;background:var(--no-bg);color:#6F7A85}
+.fst[data-fstate="done"]{background:var(--green-bg);color:#00692C}
+.fst[data-fstate="doing"]{background:var(--blue);color:#fff}
+.fst[data-fstate="skip"]{background:#F2F4F6;color:#9AA3AC}
+.fst[data-fstate="returned"]{background:var(--warn-bg);color:var(--warn)}
+.fdetail{margin-top:12px;border:1.5px solid #BFD9EE;border-radius:10px;padding:14px 16px;background:#FBFDFF}
+.fd-head{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap}
+.fd-head h3{margin:0;font-size:17px;color:var(--blue)}
+.fd-close{margin-left:auto}
+.fd-note{margin:8px 0 0;font-size:14px;padding:8px 12px;border-radius:8px;background:var(--pale2)}
+.fd-note.warn{background:var(--warn-bg);color:var(--warn)}
+.fd-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px;margin-top:10px}
+.fd-blk{min-width:0}
+.fd-blk h4{margin:0 0 4px;font-size:13.5px;color:var(--sky)}
+.fd-blk p{margin:0;font-size:14px}
+.fd-list{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.fd-list li{font-size:14px;display:flex;gap:4px 8px;align-items:flex-start;flex-wrap:wrap;min-width:0}
+.fd-list li.off{color:#9AA3AC}
+.fd-mk{flex:none;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:3px}
+.fd-mk.ok{background:var(--green);color:#fff}
+.fd-mk.pend{background:var(--sky-bg);border:1.5px solid var(--sky);color:var(--sky);font-size:10px}
+.fd-pend{font-size:12.5px;color:#00669C;background:var(--sky-bg);border-radius:6px;padding:0 8px}
+.fd-go.pend{border-color:#9CCFEA;color:var(--sky)}
+.fd-confirm{margin-top:8px}
+.fd-mk.no{background:#fff;border:1.5px solid var(--warn);color:var(--warn)}
+.fd-link{background:none;border:0;padding:0;color:var(--blue);text-decoration:underline;cursor:pointer;font:inherit;text-align:left;min-height:28px}
+.fd-go{min-height:30px;padding:0 10px;border-radius:999px;border:1.5px solid #EBB5A8;background:#fff;color:var(--warn);font-size:13px;font-weight:600;cursor:pointer}
+.fd-sw{font-size:12px;color:#9A5B00;background:#FFF4E0;border-radius:999px;padding:0 8px;white-space:nowrap}
+.ftag{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:0 8px;white-space:nowrap}
+.ftag.need{background:var(--green-bg);color:#00692C}
+.ftag.noneed{background:var(--no-bg);color:#8A949E}
+.ftag.pend{background:var(--sky-bg);color:var(--sky)}
+.ftag.code{background:#fff;border:1px solid #BFD9EE;color:var(--blue)}
+.f-when{font-size:12.5px;color:var(--muted)}
+.field.flash{box-shadow:0 0 0 3px var(--sky);border-color:var(--sky)}
+.stage-tag{display:inline-block;margin-left:8px;font-size:12.5px;font-weight:700;color:var(--sky);background:var(--sky-bg);border-radius:999px;padding:1px 10px;vertical-align:3px}
+.status-warn{background:#FFF8EC;border:1px solid #F0D3A4;color:#7A4A00;border-radius:10px;padding:8px 12px;font-size:14px}
+.pb-now b{color:var(--blue)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* 首頁：流程 × 表單對照表 */
+.ftable{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);font-size:14px}
+.ftable th,.ftable td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.ftable th{background:var(--pale2);color:var(--blue);font-size:13.5px;white-space:nowrap}
+.ftable ul{margin:0;padding-left:16px}
+.ftable li{margin:1px 0}
+.ftable .fid{font-weight:700;color:var(--sky);margin-right:4px}
+.ftable .cond{display:inline-block;margin-left:4px;font-size:12px;color:var(--sky);border:1px solid var(--sky);border-radius:999px;padding:0 7px}
+.ftable .ok{color:var(--green);font-weight:700}
+.ftable .no{color:var(--warn);font-weight:700}
+.ftable .sub{display:block;font-size:12.5px;color:var(--muted)}
+.ftable tr[data-current="true"] td{background:#F4F9FD}
+
 @media (max-width:860px){
   .topbar{padding:8px 16px;gap:8px}
   .topbar .logo{height:26px}
@@ -299,6 +387,25 @@ textarea.inp{min-height:96px;resize:vertical}
   .pro-sec{scroll-margin-top:70px}
   .pro-sec .grid{grid-template-columns:minmax(0,1fr)}
   .num-wrap{max-width:none}
+  .ftrack{padding:10px 12px 12px}
+  .ft-legend{display:none}
+  .ft-title{display:none}
+  .ft-head{flex-wrap:nowrap}
+  .ft-now{flex:1 1 auto;font-size:14px}
+  .ft-toggle{display:inline-flex;margin-left:auto;flex:none;padding:4px 12px}
+  .ftrack:not(.open) .ft-nodes{display:none}
+  .ft-nodes{display:flex;overflow-x:auto;gap:8px;padding-bottom:6px;-webkit-overflow-scrolling:touch}
+  .ft-nodes li{flex:none;width:138px}
+  .ft-nodes li + li::before{display:none}
+  .fd-grid{grid-template-columns:minmax(0,1fr)}
+  .fdetail{padding:12px}
+  #flowOverview{display:flex;flex-direction:column}
+  .ftable,.ftable tbody,.ftable tr,.ftable td{display:block;width:100%}
+  .ftable{border:0;background:transparent}
+  .ftable thead{display:none}
+  .ftable tr{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#fff;padding:6px 0}
+  .ftable td{border:0;padding:3px 12px}
+  .ftable td::before{content:attr(data-th);display:block;font-size:12px;color:var(--muted);font-weight:600}
 }
 
 /* ───── 列印 ───── */
@@ -348,6 +455,15 @@ textarea.inp{min-height:96px;resize:vertical}
 #print .sig-cap{font-size:7.5pt;color:#777}
 #print .p-sys{margin-top:2mm;font-size:8.5pt;border:0.6pt dashed #A9B8C7;padding:2mm 3mm}
 #print .p-sys .act{font-weight:700}
+#print table.pfl{width:100%;border-collapse:collapse;table-layout:fixed}
+#print table.pfl th,#print table.pfl td{border:0.6pt solid #A9B8C7;padding:1.1mm 2mm;vertical-align:top;text-align:left;font-size:8.5pt}
+#print table.pfl th{background:var(--pale2);font-weight:600}
+#print table.pfl tr{break-inside:avoid}
+#print table.pfl .st-done{color:#00692C;font-weight:700}
+#print table.pfl .st-doing{color:var(--blue);font-weight:700}
+#print table.pfl .st-returned{color:var(--warn);font-weight:700}
+#print table.pfl .st-skip{color:#999}
+#print .stg{font-size:8pt;color:var(--sky);font-weight:600;margin-left:2mm}
 </style>
 </head>
 <body>
@@ -363,6 +479,16 @@ textarea.inp{min-height:96px;resize:vertical}
   <div id="storageWarn" class="banner warn" role="status" hidden></div>
   <main>
     <section id="home" aria-labelledby="homeTitle"></section>
+    <section id="flowTrack" class="ftrack" hidden aria-label="流程進度">
+      <div class="ft-head">
+        <span class="ft-title">流程進度</span>
+        <span class="ft-now" id="ftNow"></span>
+        <span class="ft-legend" id="ftLegend" aria-hidden="true"></span>
+        <button type="button" class="btn sm ft-toggle" id="ftToggle" aria-expanded="false" aria-controls="ftNodes">展開</button>
+      </div>
+      <ol class="ft-nodes" id="ftNodes" aria-label="F1–F8 各站狀態（點站點看詳情）"></ol>
+      <div class="fdetail" id="flowDetail" hidden></div>
+    </section>
     <section id="view-U" class="view" hidden></section>
     <div id="probar" class="probar" hidden></div>
     <section id="view-E" class="view" hidden></section>
@@ -425,7 +551,56 @@ textarea.inp{min-height:96px;resize:vertical}
    "owner": "使用單位",
    "form": "本表＋EIP 工程需求申請單（附件6.1）",
    "sopRef": "§5.2",
-   "action": "使用單位填本表白底欄位，經單位主管同意後送工務處成案。用到原單位以外空間者，先送空間調整申請單（61-P-024-001）。"
+   "action": "使用單位填本表白底欄位，經單位主管同意後送工務處成案。用到原單位以外空間者，先送空間調整申請單（61-P-024-001）。",
+   "roleKey": "U",
+   "sections": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7",
+    "S8"
+   ],
+   "forms": [
+    {
+     "name": "EIP 工程需求申請單",
+     "code": "附件6.1",
+     "when": "一律"
+    },
+    {
+     "name": "空間調整申請單",
+     "code": "61-P-024-001",
+     "when": "用到單位以外的空間",
+     "showIf": {
+      "f": "otherSpace",
+      "eq": "會"
+     }
+    },
+    {
+     "name": "設備規格需求表",
+     "code": "",
+     "when": "另有設備要一起採購",
+     "showIf": {
+      "f": "otherEquip",
+      "eq": "有，已另填「設備規格需求表」"
+     }
+    }
+   ],
+   "done": [
+    {
+     "label": "使用單位必填欄位完成",
+     "rule": "requiredU"
+    },
+    {
+     "label": "單位主管簽名同意",
+     "f": "signHead",
+     "filled": true
+    }
+   ],
+   "next": "F2",
+   "reject": null
   },
   {
    "id": "F2",
@@ -433,7 +608,66 @@ textarea.inp{min-height:96px;resize:vertical}
    "owner": "工務處",
    "form": "本表灰底欄位（工務處）",
    "sopRef": "§5.3",
-   "action": "現場會勘、繪製簡易草圖、判定工程類別、法規與既有設施、費用初估。"
+   "action": "現場會勘、繪製簡易草圖、判定工程類別、法規與既有設施、費用初估。",
+   "roleKey": "E",
+   "sections": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5"
+   ],
+   "forms": [
+    {
+     "name": "工程簡易草圖",
+     "code": "",
+     "when": "一律"
+    },
+    {
+     "name": "附件6.1 工務部門費用初估與說明欄",
+     "code": "附件6.1",
+     "when": "一律"
+    }
+   ],
+   "done": [
+    {
+     "label": "會勘日期",
+     "f": "surveyDate",
+     "filled": true
+    },
+    {
+     "label": "草圖經使用單位最高主管簽認",
+     "f": "sketchSigned",
+     "eq": "已簽認"
+    },
+    {
+     "label": "工程類別判定",
+     "f": "projClass",
+     "filled": true
+    },
+    {
+     "label": "工程總價初估",
+     "f": "estTotal",
+     "filled": true
+    },
+    {
+     "label": "法規與許可逐項判定",
+     "f": "lawItems",
+     "filled": true
+    },
+    {
+     "label": "設計方式",
+     "f": "designMode",
+     "filled": true
+    },
+    {
+     "label": "是否送院區規劃管理中心",
+     "f": "planCenter",
+     "filled": true
+    }
+   ],
+   "next": "F3",
+   "reject": "F1"
   },
   {
    "id": "F3",
@@ -442,7 +676,31 @@ textarea.inp{min-height:96px;resize:vertical}
    "form": "附件6.1 院區規劃管理中心欄",
    "sopRef": "§5.3.7",
    "action": "符合 §5.3.7 任一觸發者才需送審：大型工程類、工程費用 ≧200 萬、影響院容類、需設計師提供設計圖。",
-   "conditional": true
+   "conditional": true,
+   "roleKey": "E",
+   "sections": [
+    "X3"
+   ],
+   "skipIf": {
+    "f": "planCenter",
+    "eq": "不需要"
+   },
+   "forms": [
+    {
+     "name": "附件6.1 院區規劃管理中心欄",
+     "code": "附件6.1",
+     "when": "需送審"
+    }
+   ],
+   "done": [
+    {
+     "label": "審核通過",
+     "f": "f3Result",
+     "eq": "審核通過"
+    }
+   ],
+   "next": "F4",
+   "reject": "F2"
   },
   {
    "id": "F4",
@@ -450,7 +708,27 @@ textarea.inp{min-height:96px;resize:vertical}
    "owner": "核決權限主管",
    "form": "附件6.1 核決欄",
    "sopRef": "§5.4",
-   "action": "同意則進入設計；不同意依原因修正後重新呈核。"
+   "action": "同意則進入設計；不同意依原因修正後重新呈核。",
+   "roleKey": "E",
+   "sections": [
+    "X4"
+   ],
+   "forms": [
+    {
+     "name": "附件6.1 核決欄",
+     "code": "附件6.1",
+     "when": "一律"
+    }
+   ],
+   "done": [
+    {
+     "label": "核決同意",
+     "f": "f4Result",
+     "eq": "同意"
+    }
+   ],
+   "next": "F5",
+   "reject": "F2"
   },
   {
    "id": "F5",
@@ -458,7 +736,66 @@ textarea.inp{min-height:96px;resize:vertical}
    "owner": "PCM／工務處＋使用單位",
    "form": "本表灰底欄位（PCM）、工程材料審查暨查驗紀錄表（附件6.2）、工程標單（附件6.11）",
    "sopRef": "§5.5",
-   "action": "設計圖標示設備位置與數量，召開設計確認會議，使用單位最高主管簽認設計圖。"
+   "action": "設計圖標示設備位置與數量，召開設計確認會議，使用單位最高主管簽認設計圖。",
+   "roleKey": "P",
+   "sections": [
+    "P1"
+   ],
+   "forms": [
+    {
+     "name": "設計圖（標示設備位置與數量）",
+     "code": "",
+     "when": "一律"
+    },
+    {
+     "name": "工程材料審查暨查驗紀錄表",
+     "code": "附件6.2",
+     "when": "有特殊材料或訂製品",
+     "showIf": {
+      "f": "specialMat",
+      "eq": "有，須填工程材料審查暨查驗紀錄表（附件6.2）"
+     }
+    },
+    {
+     "name": "工程標單",
+     "code": "附件6.11",
+     "when": "一律"
+    },
+    {
+     "name": "管線設置管理規範",
+     "code": "附件6.12",
+     "when": "涉及管線"
+    },
+    {
+     "name": "設計確認會議紀錄",
+     "code": "",
+     "when": "一律"
+    }
+   ],
+   "done": [
+    {
+     "label": "設計確認會議",
+     "f": "designMeeting",
+     "filled": true
+    },
+    {
+     "label": "設計圖經使用單位最高主管簽認",
+     "f": "designSigned",
+     "eq": "已簽認"
+    },
+    {
+     "label": "既有設施連結可行並簽核至行政管理部最高主管",
+     "f": "facilityConfirm",
+     "eq": "已簽核"
+    },
+    {
+     "label": "工程標單審閱、會議紀錄存查",
+     "f": "bidListReview",
+     "eq": "已完成"
+    }
+   ],
+   "next": "F6",
+   "reject": "F2"
   },
   {
    "id": "F6",
@@ -466,7 +803,46 @@ textarea.inp{min-height:96px;resize:vertical}
    "owner": "需求部門、工務處、採購部門",
    "form": "EIP 請購單（工程類）",
    "sopRef": "§5.6–§5.10",
-   "action": "二家以上報價；合約金額 ≧100 萬簽訂工程合約書。"
+   "action": "二家以上報價；合約金額 ≧100 萬簽訂工程合約書。",
+   "roleKey": "P",
+   "sections": [
+    "P2"
+   ],
+   "forms": [
+    {
+     "name": "EIP 請購單（請購類別：工程類）",
+     "code": "15-P-001",
+     "when": "一律"
+    },
+    {
+     "name": "工程合約書",
+     "code": "14-P-003",
+     "when": "合約金額 ≧100 萬",
+     "showIf": {
+      "f": "contractNeed",
+      "eq": "需要（≧100 萬）"
+     }
+    }
+   ],
+   "done": [
+    {
+     "label": "報價家數",
+     "f": "quoteCount",
+     "filled": true
+    },
+    {
+     "label": "決標（合約）金額",
+     "f": "awardAmt",
+     "filled": true
+    },
+    {
+     "label": "合約需求判定",
+     "f": "contractNeed",
+     "filled": true
+    }
+   ],
+   "next": "F7",
+   "reject": null
   },
   {
    "id": "F7",
@@ -474,7 +850,71 @@ textarea.inp{min-height:96px;resize:vertical}
    "owner": "工務處／PCM",
    "form": "施工告示單（6.4）、警示標語單（6.5）、工程日報表（6.6）、工程進度表（6.3）",
    "sopRef": "§5.11–§5.12",
-   "action": "施工前 3 天 EIP 公告並通知鄰近單位，前 1 天張貼告示與圍籬；工期 ≧2 週排工程進度表。"
+   "action": "施工前 3 天 EIP 公告並通知鄰近單位，前 1 天張貼告示與圍籬；工期 ≧2 週排工程進度表。",
+   "roleKey": "P",
+   "sections": [
+    "X7"
+   ],
+   "forms": [
+    {
+     "name": "承攬商安全衛生承諾書／危害因素告知單",
+     "code": "71-P-009-003／005",
+     "when": "施工前一週"
+    },
+    {
+     "name": "施工告示單",
+     "code": "附件6.4",
+     "when": "施工前 1 天"
+    },
+    {
+     "name": "警示標語單",
+     "code": "附件6.5",
+     "when": "施工前 1 天"
+    },
+    {
+     "name": "工程日報表",
+     "code": "附件6.6",
+     "when": "每個施工日"
+    },
+    {
+     "name": "工程進度表",
+     "code": "附件6.3",
+     "when": "工期 ≧2 週",
+     "showIf": {
+      "f": "schedule",
+      "eq": "需要（工期 ≧2 週）"
+     }
+    },
+    {
+     "name": "工程變更申請單",
+     "code": "附件6.7",
+     "when": "施工中有變更"
+    }
+   ],
+   "done": [
+    {
+     "label": "施工前 3 天公告",
+     "f": "f7Announce",
+     "filled": true
+    },
+    {
+     "label": "施工告示與圍籬",
+     "f": "f7Posted",
+     "eq": "已完成"
+    },
+    {
+     "label": "開工",
+     "f": "f7Start",
+     "filled": true
+    },
+    {
+     "label": "完工",
+     "f": "f7Finish",
+     "filled": true
+    }
+   ],
+   "next": "F8",
+   "reject": null
   },
   {
    "id": "F8",
@@ -482,7 +922,56 @@ textarea.inp{min-height:96px;resize:vertical}
    "owner": "工務處主持、採購部門召集",
    "form": "工程完工證明書（6.8）、工程完工驗收紀錄表（6.9）、點交／移交清冊（6.10）",
    "sopRef": "§5.13–§5.15",
-   "action": "依金額級距決定會驗單位與簽核流程。"
+   "action": "依金額級距決定會驗單位與簽核流程。",
+   "roleKey": "P",
+   "sections": [
+    "X8"
+   ],
+   "forms": [
+    {
+     "name": "工程完工證明書",
+     "code": "附件6.8",
+     "when": "完工後廠商提出"
+    },
+    {
+     "name": "工程完工驗收紀錄表",
+     "code": "附件6.9",
+     "when": "驗收"
+    },
+    {
+     "name": "工程點交／移交清冊",
+     "code": "附件6.10",
+     "when": "驗收合格後 15 日內"
+    }
+   ],
+   "done": [
+    {
+     "label": "驗收合格（初驗、複驗或扣款驗收）",
+     "f": "f8Result",
+     "in": [
+      "初驗合格",
+      "複驗合格",
+      "扣款驗收"
+     ]
+    },
+    {
+     "label": "驗收紀錄表簽核",
+     "f": "f8Record",
+     "eq": "已完成"
+    },
+    {
+     "label": "點交／移交",
+     "f": "f8Handover",
+     "filled": true
+    },
+    {
+     "label": "送採購部門請款",
+     "f": "f8Paid",
+     "eq": "已送採購部門請款"
+    }
+   ],
+   "next": null,
+   "reject": null
   }
  ],
  "sections": [
@@ -1602,6 +2091,204 @@ textarea.inp{min-height:96px;resize:vertical}
      "type": "signature"
     }
    ]
+  },
+  {
+   "id": "X3",
+   "role": "E",
+   "stage": "F3",
+   "title": "院區規劃管理中心審核紀錄",
+   "intro": "需送審者，由工務處登錄審核結果（61-P-029 §5.3.7）。不需送審者免填。",
+   "showIf": {
+    "f": "planCenter",
+    "eq": "需要"
+   },
+   "fields": [
+    {
+     "id": "f3Date",
+     "label": "送審日期",
+     "type": "date",
+     "sopRef": "§5.3.7"
+    },
+    {
+     "id": "f3Result",
+     "label": "審核結果",
+     "type": "radio",
+     "options": [
+      "審核通過",
+      "退回修正"
+     ],
+     "sopRef": "§5.3.7"
+    },
+    {
+     "id": "f3Note",
+     "label": "審核意見",
+     "type": "textarea"
+    }
+   ]
+  },
+  {
+   "id": "X4",
+   "role": "E",
+   "stage": "F4",
+   "title": "工程需求核決紀錄",
+   "intro": "核決權限主管於附件 6.1 核決欄簽核後，由工務處登錄結果（§5.4）。",
+   "fields": [
+    {
+     "id": "f4Date",
+     "label": "核決日期",
+     "type": "date",
+     "sopRef": "§5.4"
+    },
+    {
+     "id": "f4Result",
+     "label": "核決結果",
+     "type": "radio",
+     "options": [
+      "同意",
+      "不同意（依原因修正後重新呈核）"
+     ],
+     "sopRef": "§5.4.1"
+    },
+    {
+     "id": "f4Approver",
+     "label": "核決主管",
+     "type": "text"
+    },
+    {
+     "id": "f4Note",
+     "label": "核決意見",
+     "type": "textarea"
+    }
+   ]
+  },
+  {
+   "id": "X7",
+   "role": "P",
+   "stage": "F7",
+   "title": "施工管理紀錄",
+   "intro": "施工前公告、安全文件與施工期間管理（§5.11–§5.12）。",
+   "fields": [
+    {
+     "id": "f7Kickoff",
+     "label": "專案協調會日期",
+     "type": "date",
+     "help": "合約金額 ≧100 萬者採購部門通知得標廠商參加。",
+     "sopRef": "§5.11.2.2"
+    },
+    {
+     "id": "f7OshDocs",
+     "label": "承攬商安全衛生承諾書（71-P-009-003）及危害因素告知單（71-P-009-005）",
+     "type": "radio",
+     "options": [
+      "已於施工前一週繳交",
+      "未繳交",
+      "不適用"
+     ],
+     "sopRef": "§5.11.4"
+    },
+    {
+     "id": "f7Announce",
+     "label": "EIP 全院公告並通知職安中心與鄰近單位主管（施工前 3 天）",
+     "type": "date",
+     "sopRef": "§5.12.6.1"
+    },
+    {
+     "id": "f7Posted",
+     "label": "施工告示單（附件6.4）張貼與圍籬警示標語（附件6.5）（施工前 1 天）",
+     "type": "radio",
+     "options": [
+      "已完成",
+      "未完成"
+     ],
+     "sopRef": "§5.12.6.2–§5.12.6.3"
+    },
+    {
+     "id": "f7Start",
+     "label": "開工日",
+     "type": "date"
+    },
+    {
+     "id": "f7Finish",
+     "label": "完工日",
+     "type": "date"
+    },
+    {
+     "id": "f7Records",
+     "label": "施工期間紀錄",
+     "type": "checkbox",
+     "options": [
+      "工程日報表（附件6.6）每週呈核",
+      "工程進度表（附件6.3）",
+      "工程材料審查暨查驗紀錄表（附件6.2）",
+      "工程變更申請單（附件6.7）"
+     ],
+     "sopRef": "§5.12.4–§5.12.8"
+    }
+   ]
+  },
+  {
+   "id": "X8",
+   "role": "P",
+   "stage": "F8",
+   "title": "驗收、點交與付款紀錄",
+   "intro": "依金額級距會同驗收（§5.13），驗收合格後點交並請款（§5.14–§5.15）。",
+   "fields": [
+    {
+     "id": "f8Cert",
+     "label": "工程完工證明書（附件6.8）",
+     "type": "radio",
+     "options": [
+      "廠商已提出",
+      "未提出"
+     ],
+     "sopRef": "§5.13.1"
+    },
+    {
+     "id": "f8Inspect",
+     "label": "初驗日期",
+     "type": "date",
+     "sopRef": "§5.13.2"
+    },
+    {
+     "id": "f8Result",
+     "label": "驗收結果",
+     "type": "radio",
+     "options": [
+      "初驗合格",
+      "初驗有缺失，待改善後複驗",
+      "複驗合格",
+      "扣款驗收"
+     ],
+     "sopRef": "§5.13.2.3–§5.13.2.4、§5.15.3"
+    },
+    {
+     "id": "f8Record",
+     "label": "工程完工驗收紀錄表（附件6.9）簽核",
+     "type": "radio",
+     "options": [
+      "已完成",
+      "未完成"
+     ],
+     "sopRef": "§5.13.4"
+    },
+    {
+     "id": "f8Handover",
+     "label": "點交／移交日期（工程點交／移交清冊 附件6.10）",
+     "type": "date",
+     "help": "驗收合格後 15 日內移交完畢。",
+     "sopRef": "§5.14"
+    },
+    {
+     "id": "f8Paid",
+     "label": "請款",
+     "type": "radio",
+     "options": [
+      "已送採購部門請款",
+      "未請款"
+     ],
+     "sopRef": "§5.15"
+    }
+   ]
   }
  ],
  "rules": [
@@ -1813,8 +2500,23 @@ textarea.inp{min-height:96px;resize:vertical}
    "item": "新增：RO 純水需求",
    "change": "使用單位用水題新增「需要 RO 純水（如透析機、檢驗設備用水）」並追問用途與床數；工務處新增 RO 系統容量判定；驗收文件新增 RO 水質檢驗報告",
    "reason": "院內設有透析，裝修可能涉及 RO 供水點、循環管路與濃縮排水"
+  },
+  {
+   "item": "流程站點即時狀態",
+   "change": "每個站點補上負責角色、對應本表節次、應附表單（含觸發條件）、完成條件與下一站／退回站點；新增 F3、F4 審核核決紀錄（工務處登錄）與 F7 施工、F8 驗收點交紀錄（PCM 登錄），站點狀態改由表單內容自動判定",
+   "reason": "原流程只有名稱與表單清單，看不出每站要用哪幾節、做到什麼程度算完成；§5.3.7、§5.4、§5.11–§5.15"
   }
- ]
+ ],
+ "flowStatusRule": {
+  "desc": "站點狀態由表單內容自動判定：skipIf 成立＝不需走；done 條件全部成立＝已完成；第一個未完成且未略過的站點＝目前站點（進行中）；其後＝未開始。人工推進的站點若超前自動判定，顯示提醒但不阻擋；退回時回到 reject 指定站點。",
+  "states": [
+   "已完成",
+   "進行中",
+   "未開始",
+   "不需走",
+   "退回補件"
+  ]
+ }
 }</script>
 <script>
 (function () {
@@ -2119,6 +2821,116 @@ function evaluate(input) {
   return { amount: amt, estRejected, awardRejected, cls, plan, contract, schedule, accept, ic, osh, law, space, equip, notice, flow };
 }
 
+/* ───── 流程站點狀態引擎（純函式：只讀傳入的 answers／flags／history，不碰畫面狀態） ───── */
+const FLOW = SCHEMA.flow;
+const FLOW_IDX = {}; FLOW.forEach((fl, i) => { FLOW_IDX[fl.id] = i; });
+const SEC_BY_ID = {}; SCHEMA.sections.forEach(s => { SEC_BY_ID[s.id] = s; });
+const FSTATE_TXT = { done: '已完成', doing: '進行中', todo: '未開始', skip: '不需走', returned: '退回補件' };
+// 判定規則說明（白話：不顯示 schema 鍵名）
+const FLOW_RULE_TXT = SCHEMA.flowStatusRule.desc.replace('skipIf 成立', '「不需走」條件成立').replace('done 條件', '完成條件').replace('回到 reject 指定站點', '回到該站指定的退回站點');
+const FSTATE_ICON = { done: '✓', doing: '', todo: '', skip: '', returned: '!' };
+// 完成條件的「已填」：與必填檢查（isEmpty）不同，matrix 要每一列都有判定值
+function filledFor(f, v) {
+  if (!f) return false;
+  switch (f.type) {
+    case 'checkbox': return Array.isArray(v) && v.length > 0;
+    case 'number': case 'radio': return v !== null && v !== undefined && v !== '';
+    case 'signature': return !!(v && String(v.name || '').trim() && v.img);
+    case 'matrix': return !!v && f.rows.every(r => v[r.id] && v[r.id].v);
+    case 'counts': return !!v && f.items.some(it => v[it] !== null && v[it] !== undefined && v[it] !== '');
+    default: return v !== null && v !== undefined && String(v).trim() !== '';
+  }
+}
+function condMet(c, a) {
+  const v = a[c.f];
+  if ('eq' in c) return v === c.eq;
+  if ('in' in c) return Array.isArray(c.in) && c.in.includes(v);
+  if ('has' in c) return Array.isArray(v) && v.includes(c.has);
+  if (c.filled) return filledFor(FIELDS[c.f], v);
+  return false;
+}
+// 系統預標（state.auto）且未經工務處／PCM 動過（state.manual）＝待確認
+function unconfirmedKeys(fid, st) {
+  const f = FIELDS[fid]; if (!f || !f.derivedHint) return [];
+  const auto = st.auto || {}, man = st.manual || {};
+  const keys = f.type === 'matrix' ? f.rows.map(r => fid + '.' + r.id) : [fid];
+  return keys.filter(k => auto[k] && !man[k]);
+}
+function missingU(a, flags) {
+  return U_SECS.flatMap(s => s.fields).filter(f => f.required && showIfOk(f, a) && isEmpty(f, a[f.id]) && !(FLEX[f.id] && flags && flags[FLEX[f.id].key]));
+}
+const isReturnEntry = x => !!x && (x.kind === 'return' || /^退回/.test(String(x.action || '')));
+function formNeed(fm, a) {
+  if (!fm.showIf) return 'always';
+  const v = a[fm.showIf.f];
+  if (v === null || v === undefined || v === '' || (Array.isArray(v) && !v.length)) return 'pending';
+  return showIfOk(fm, a) ? 'yes' : 'no';
+}
+function flowStatus(st) {
+  st = st || {};
+  const a = normalize(st.answers || {});
+  const flags = st.flags || {};
+  const hist = Array.isArray(st.history) ? st.history : [];
+  const stations = FLOW.map((fl, i) => {
+    const conds = (fl.done || []).map(c => {
+      if (c.rule === 'requiredU') {
+        const miss = missingU(a, flags);
+        return { label: c.label, ok: miss.length === 0, rule: c.rule, f: miss.length ? miss[0].id : null, missing: miss.map(f => f.label) };
+      }
+      const raw = condMet(c, a);
+      const pend = raw && c.f ? unconfirmedKeys(c.f, st) : [];
+      return { label: c.label, ok: raw && !pend.length, pending: pend.length > 0, pendKeys: pend, value: pend.length ? autoValueText(c.f, a[c.f], pend) : '', f: c.f || null };
+    });
+    const met = conds.filter(c => c.ok).length;
+    const skip = !!(fl.skipIf && condMet(fl.skipIf, a));
+    const started = met > 0 || (fl.sections || []).some(sid => SEC_BY_ID[sid] && SEC_BY_ID[sid].fields.some(f => filledFor(f, a[f.id])));
+    return {
+      id: fl.id, name: fl.name, idx: i, roleKey: fl.roleKey || null, owner: fl.owner, sections: (fl.sections || []).slice(),
+      conds, met, total: conds.length, skip, complete: conds.length > 0 && met === conds.length, started,
+      forms: (fl.forms || []).map(fm => ({ name: fm.name, code: fm.code || '', when: fm.when || '', need: formNeed(fm, a) })),
+      next: fl.next || null, reject: fl.reject || null, state: null,
+    };
+  });
+  let cur = stations.find(s => !s.skip && !s.complete) || null;
+  let returned = null;
+  const last = hist[hist.length - 1];
+  if (isReturnEntry(last)) {
+    const from = last.from in FLOW_IDX ? last.from : null;
+    let to = last.to in FLOW_IDX ? last.to : null;
+    if (!to && from) to = FLOW[FLOW_IDX[from]].reject;
+    if (!to) to = 'F1'; // 舊案件檔的「退回使用單位補件」沒有 to，一律回 F1
+    returned = { from: from, to: to, note: String(last.note || ''), time: String(last.time || ''), by: String(last.role || '') };
+    cur = stations[FLOW_IDX[to]];
+  }
+  stations.forEach(s => {
+    if (returned && s.id === returned.to) s.state = 'returned';
+    else if (s.skip) s.state = 'skip';
+    else if (s.complete) s.state = 'done';
+    else if (cur && s.id === cur.id) s.state = 'doing';
+    else s.state = 'todo';
+  });
+  return {
+    stations, current: cur ? cur.id : null, currentIdx: cur ? cur.idx : null, returned, allDone: !cur,
+    doneCount: stations.filter(s => s.state === 'done').length, skipCount: stations.filter(s => s.state === 'skip').length,
+  };
+}
+// 人工選的站點超前自動判定時，列出前面尚未達成的站點與缺項（只提醒、不阻擋）
+function aheadInfo(fs, targetId) {
+  if (!fs.current || !(targetId in FLOW_IDX)) return null;
+  const ti = FLOW_IDX[targetId], ci = fs.currentIdx;
+  if (ti <= ci) return null;
+  const msgs = fs.stations.filter(s => s.idx >= ci && s.idx < ti && s.state !== 'done' && s.state !== 'skip')
+    .map(s => s.id + ' ' + s.name + ' 完成條件尚未達成（缺：' + s.conds.filter(c => !c.ok).map(c => condLabel(c) + (c.pending ? '〔系統預標待確認〕' : '')).join('、') + '）');
+  return msgs.length ? { target: targetId, current: fs.current, msgs, text: msgs.join('；') } : null;
+}
+function autoValueText(fid, v, keys) {
+  const f = FIELDS[fid];
+  if (f.type === 'matrix') return keys.length + ' 列預標（' + keys.map(k => { const r = f.rows.find(x => fid + '.' + x.id === k); return r.label.split('（')[0] + '：' + v[r.id].v; }).join('、') + '）';
+  return f.type === 'radio' ? String(v).split('（')[0] : fmt(f, v);
+}
+function condLabel(c) { return c.rule === 'requiredU' && c.missing && c.missing.length ? c.label + '（尚缺 ' + c.missing.length + ' 題）' : c.label; }
+function secCondText(s) { return s.showIf ? condText(s) : ''; }
+
 /* ───── derivedHint ───── */
 function derivedValueFor(f, d) {
   const o = f.options;
@@ -2227,6 +3039,8 @@ function renderField(f, role) {
       const sub = isU && OPT_HINT[f.id] && OPT_HINT[f.id][o];
       const lab = h('label', { class: 'chip ' + t, for: id + '-' + i, dataset: { value: o } }, inp, h('span', { class: 'mark', 'aria-hidden': 'true' }),
         sub ? h('span', { class: 'c-txt' }, h('span', { text: o }), h('span', { class: 'c-sub', text: sub })) : h('span', { text: o }));
+      // 點一下已是預標值的選項＝確認（change 不會觸發）
+      if (t === 'radio' && f.derivedHint) inp.addEventListener('click', () => { if (state.mode !== 'U' && state.answers[f.id] === o && state.auto[f.id] && !state.manual[f.id]) confirmField(f.id); });
       inp.addEventListener('change', () => {
         if (t === 'radio') setAnswer(f.id, o, true);
         else {
@@ -2272,6 +3086,7 @@ function renderField(f, role) {
       f.cols.forEach((c, i) => {
         const iid = id + '-' + r.id + '-' + i;
         const inp = h('input', { type: 'radio', name: id + '-' + r.id, value: c, id: iid });
+        inp.addEventListener('click', () => { const k = f.id + '.' + r.id; if (state.mode !== 'U' && state.answers[f.id][r.id].v === c && state.auto[k] && !state.manual[k]) { state.manual[k] = true; refresh(); } });
         inp.addEventListener('change', () => {
           const v = JSON.parse(JSON.stringify(state.answers[f.id]));
           v[r.id].v = c; state.manual[f.id + '.' + r.id] = true;
@@ -2369,7 +3184,16 @@ function numWarn(id, v) {
   return '';
 }
 function syncAll() { for (const id in FIELDS) syncField(id); syncVisibility(); syncBadges(); }
-function syncVisibility() { for (const id in FIELDS) { const w = fieldEl(id); if (w) w.classList.toggle('is-off', !showIfOk(FIELDS[id])); } }
+function syncVisibility() {
+  for (const id in FIELDS) { const w = fieldEl(id); if (w) w.classList.toggle('is-off', !showIfOk(FIELDS[id])); }
+  // 節層級 showIf（X3：不需送院區規劃管理中心審核時整節隱藏，左側導覽同步）
+  SCHEMA.sections.forEach(s => {
+    if (!s.showIf) return;
+    const on = showIfOk(s);
+    const el = $('#sec-' + s.id); if (el) el.hidden = !on;
+    $$('.pro-nav a[href="#sec-' + s.id + '"]').forEach(x => { x.hidden = !on; });
+  });
+}
 function syncBadges() {
   for (const id in FIELDS) {
     const f = FIELDS[id]; if (!f.derivedHint) continue;
@@ -2379,7 +3203,7 @@ function syncBadges() {
       const anyAuto = f.rows.some(r => state.auto[id + '.' + r.id] && !state.manual[id + '.' + r.id]);
       const anyMan = f.rows.some(r => state.manual[id + '.' + r.id]);
       w.dataset.derived = anyAuto ? 'auto' : anyMan ? 'override' : 'none';
-      if (anyAuto) slot.append(h('span', { class: 'badge auto', text: '依使用單位回答預標，請確認' }));
+      if (anyAuto) slot.append(h('span', { class: 'badge auto', text: '依使用單位回答預標，請確認' }), h('button', { type: 'button', class: 'restore', dataset: { confirmField: id }, text: '確認預標', onclick: () => confirmField(id) }));
       f.rows.forEach(r => {
         const key = id + '.' + r.id, rb = $('[data-row="' + r.id + '"] .row-badge', w);
         rb.textContent = '';
@@ -2393,7 +3217,7 @@ function syncBadges() {
       slot.append(h('span', { class: 'badge override', text: '已人工覆寫' }), h('button', { type: 'button', class: 'restore', text: '恢復預標', onclick: () => { delete state.manual[id]; refresh(); } }));
     } else if (state.auto[id]) {
       w.dataset.derived = 'auto';
-      slot.append(h('span', { class: 'badge auto', text: '依使用單位回答預標，請確認' }));
+      slot.append(h('span', { class: 'badge auto', text: '依使用單位回答預標，請確認' }), h('button', { type: 'button', class: 'restore', dataset: { confirmField: id }, text: '確認預標', onclick: () => confirmField(id) }));
     } else w.dataset.derived = 'none';
   }
   const osh = $('[data-rule-note="R_OSH"]');
@@ -2413,6 +3237,7 @@ function refresh(changedId) {
   syncVisibility(); syncBadges();
   if (state.mode === 'U') { renderPredict(); renderStepMiss(); }
   if (state.mode === 'E' || state.mode === 'P') { renderRules(); }
+  renderFlow();
   renderPrint();
   scheduleSave();
 }
@@ -2468,7 +3293,13 @@ function loadCaseObj(o) {
     if (f.type === 'matrix') f.rows.forEach(r => { const k = id + '.' + r.id; if (state.answers[id][r.id].v !== null && !state.auto[k]) state.manual[k] = true; });
     else if (!isEmpty(f, state.answers[id]) && !state.auto[id]) state.manual[id] = true;
   }
-  state.history = Array.isArray(o.history) ? o.history.filter(x => x && typeof x === 'object').map(x => ({ role: String(x.role || ''), action: String(x.action || ''), time: String(x.time || ''), note: x.note ? String(x.note) : undefined })) : [];
+  state.history = Array.isArray(o.history) ? o.history.filter(x => x && typeof x === 'object').map(x => {
+    const e = { role: String(x.role || ''), action: String(x.action || ''), time: String(x.time || ''), note: x.note ? String(x.note) : undefined };
+    if (x.kind === 'return') e.kind = 'return';
+    if (x.from in FLOW_IDX) e.from = x.from;
+    if (x.to in FLOW_IDX) e.to = x.to;
+    return e;
+  }) : [];
   state.status = SCHEMA.flow.some(x => x.id === o.status) ? o.status : 'F1';
   state.returned = o.returned && o.returned.note ? { note: String(o.returned.note), time: String(o.returned.time || ''), by: String(o.returned.by || '') } : null;
   state.step = Number.isInteger(o.step) ? o.step : 0;
@@ -2484,7 +3315,13 @@ function exportCase() {
     exportedAt: nowStr(), stage: roleShort(stageRole), status: state.status,
     answers: state.answers, manual: state.manual, auto: state.auto, history: state.history, returned: state.returned,
     flags: state.flags, legacy: state.legacy,
+    flowStatus: flowSnapshot(), // 僅供人看的快照；匯入時一律依 answers／history 重算，不讀這一段
   }));
+}
+function flowSnapshot() {
+  const fs = flowStatus(state);
+  return { computedAt: nowStr(), current: fs.current, allDone: fs.allDone, returned: fs.returned,
+    stations: fs.stations.map(s => ({ id: s.id, name: s.name, state: s.state, stateText: FSTATE_TXT[s.state], met: s.met, total: s.total, unmet: s.conds.filter(c => !c.ok).map(condLabel) })) };
 }
 function safeName(s) { return String(s || '未命名').replace(/[\\/:*?"<>|\r\n\t]+/g, '_').trim().slice(0, 60) || '未命名'; }
 function saveBlob(obj, name) {
@@ -2505,7 +3342,7 @@ function downloadCase(role, action, opts) {
   const name = '需求表_' + safeName(state.answers.projName) + '_' + obj.stage + (opts.draft ? '_草稿' : '') + '_' + d + '.json';
   api.lastExport = obj; api.lastExportName = name;
   if (saveBlob(obj, name) && !opts.quiet) toast('已下載案件檔：' + name, 'good');
-  saveDraft(); renderPrint();
+  saveDraft(); renderFlow(); renderPrint();
   return obj;
 }
 function importCase(obj) {
@@ -2526,7 +3363,7 @@ function importCase(obj) {
   const dropped = loadCaseObj(obj);
   if (dropped.length) warns.push(dropped.length + ' 個欄位值與本版表單不相容（' + dropped.map(k => FIELDS[k] ? FIELDS[k].label : k).join('、') + '），已原樣保留在案件檔的保留區，不會遺失，請人工確認');
   renderHome();
-  syncAll(); renderPrint(); saveDraft();
+  syncAll(); renderFlow(); renderPrint(); saveDraft();
   toast(warns.length ? '已匯入，但' + warns.join('；') + '。' : '已匯入案件：' + (state.answers.projName || '未命名'), warns.length ? 'warn' : 'good');
   return true;
 }
@@ -2584,18 +3421,37 @@ function renderHome() {
   actions.append(...[resume].concat(restores).filter(Boolean), h('button', { type: 'button', class: 'btn', id: 'btnPrintBlank', text: '列印空白表', onclick: () => doPrint(true) }));
   home.append(actions);
   const msg = h('div', { class: 'home-msg', id: 'homeMsg', role: 'status', 'aria-live': 'polite' });
-  if (hasCase()) msg.append(h('span', { class: 'case-chip', text: '目前案件：' + (state.answers.projName || '未命名') + '｜流程站點 ' + state.status }));
+  const fsH = hasCase() ? flowStatus(state) : null;
+  if (fsH) msg.append(h('span', { class: 'case-chip', text: '目前案件：' + (state.answers.projName || '未命名') + '｜流程站點 ' + flowNowText(fsH) }));
   home.append(msg);
-  home.append(h('details', { class: 'home-more', id: 'homeMore' }, h('summary', { text: '表單依據與完整流程（F1–F8，工務處／PCM 參考）' }),
+  home.append(h('details', { class: 'home-more', id: 'homeMore' },
+    h('summary', { text: '流程 × 表單對照表（F1–F8：誰做、本表哪幾節、應附表單、完成條件）' + (fsH ? '｜目前案件 ' + flowNowText(fsH) : '') }),
     h('div', { class: 'hero' },
       h('p', { text: META.basis }),
       h('p', { text: META.relation }),
       h('ul', { class: 'notes' }, META.notes.map(n => h('li', { text: n })))),
-    h('h2', { class: 'h2', text: '流程總覽' }),
-    h('ol', { class: 'flow', id: 'flowOverview' }, SCHEMA.flow.map(fl => h('li', { class: fl.conditional ? 'is-cond' : '', dataset: { flow: fl.id }, title: fl.action },
-      h('span', { class: 'fid' }, fl.id, fl.conditional ? h('span', { class: 'cond', text: '視需要' }) : null),
-      h('div', { class: 'fname', text: fl.name }),
-      h('div', { class: 'fowner', text: fl.owner + '｜' + fl.sopRef }))))));
+    h('h2', { class: 'h2', text: '流程 × 表單對照表' }),
+    h('p', { class: 'help', id: 'flowTableNote', text: fsH ? '「狀態」欄依目前案件「' + (state.answers.projName || '未命名') + '」的表單內容即時判定。' + FLOW_RULE_TXT
+      : '尚未開啟案件：下表為各站的一般說明。開啟或填寫案件後，會多一欄「狀態」，依表單內容即時判定各站已完成、進行中、未開始或不需走。' }),
+    flowTable(fsH)));
+}
+function flowTable(fs) {
+  const cols = ['站點', '誰做', '本表節次', '應附表單', '完成條件'].concat(fs ? ['狀態'] : []);
+  const NEED = { yes: ['need', '本案需要'], no: ['noneed', '本案不需要'], pending: ['pend', '待判定'] };
+  const body = h('tbody', {}, FLOW.map((fl, i) => {
+    const s = fs && fs.stations[i];
+    const td = (k, ...kids) => h('td', { 'data-th': cols[k] }, ...kids);
+    return h('tr', { dataset: { flow: fl.id, current: String(!!(fs && fs.current === fl.id)) } },
+      td(0, h('span', { class: 'fid', text: fl.id }), fl.name, fl.conditional ? h('span', { class: 'cond', text: '視需要' }) : null,
+        fl.skipIf ? h('span', { class: 'sub', text: '「' + FIELDS[fl.skipIf.f].label + '」選「' + fl.skipIf.eq + '」時不需走' }) : null),
+      td(1, fl.owner, h('span', { class: 'sub', text: '本表由' + roleShort(fl.roleKey) + '登錄｜' + fl.sopRef })),
+      td(2, (fl.sections || []).map(sid => sid + ' ' + SEC_BY_ID[sid].title).join('、')),
+      td(3, h('ul', {}, (fl.forms || []).map((fm, k) => h('li', {}, fm.name, fm.code ? '（' + fm.code + '）' : '', h('span', { class: 'sub', text: fm.when }),
+        s && NEED[s.forms[k].need] ? h('span', { class: 'ftag ' + NEED[s.forms[k].need][0], text: NEED[s.forms[k].need][1] }) : null)))),
+      td(4, h('ul', {}, (fl.done || []).map((c, k) => h('li', {}, s && s.state !== 'skip' ? h('span', { class: s.conds[k].ok ? 'ok' : 'no', text: s.conds[k].ok ? '✓ ' : '✗ ' }) : null, s ? condLabel(s.conds[k]) : c.label)))),
+      s ? td(5, h('span', { class: 'fst', dataset: { fstate: s.state }, text: FSTATE_TXT[s.state] + (fs.current === s.id ? '（目前）' : '') }), h('span', { class: 'sub', text: s.state === 'skip' ? '略過' : '完成條件 ' + s.met + '/' + s.total })) : null);
+  }));
+  return h('div', { id: 'flowOverview', class: 'ftable-wrap' }, h('table', { class: 'ftable' }, h('thead', {}, h('tr', {}, cols.map(c => h('th', { scope: 'col', text: c })))), body));
 }
 function resumeDraft() {
   const d = readDraft(); if (!d) { toast('找不到草稿', 'warn'); return; }
@@ -2626,6 +3482,7 @@ function setMode(m) {
   if (m === 'U') { renderReturnBanner(); goStep(state.step || 0, true, state.sub || 0); renderPredict(); }
   if (m === 'E' || m === 'P') { applyDerived(); renderProbar(); renderSummaries(); renderRules(); syncAll(); }
   syncVisibility();
+  renderFlow();
   renderPrint();
   window.scrollTo(0, 0);
 }
@@ -2970,12 +3827,17 @@ function renderPredict() {
   if (!lawKeys.length && !unsure) law.append(h('div', { class: 'pr-text', text: (state.answers.touches || []).length ? '依目前勾選，看不出需要特別的法規申請，工務處會勘時會再確認。' : '第 5 步「會動到哪些東西」勾完後，這裡會提示可能要辦的申請。' }));
   if (lawKeys.length) brief.push('可能要辦法規申請');
   body.append(law);
+  const fsU = flowStatus(state);
+  body.append(h('p', { class: 'p-fine', id: 'predictNow', style: 'margin:0 0 6px' }, '目前進度：', h('b', { text: flowNowText(fsU) }), '（頁面上方的流程進度軌可點各站看說明）'));
   const more = h('details', { class: 'p-more' }, h('summary', { text: '看完整流程（F1–F8，給想了解的人）' }));
   const ol = h('ol', { class: 'pflow' });
-  SCHEMA.flow.forEach(fl => {
-    const fd = d.flow[fl.id];
-    const li = h('li', { dataset: { flow: fl.id, state: fd.state } },
-      h('div', { class: 'pf-head' }, h('span', {}, h('b', { text: fl.id }), fl.name, fl.conditional ? '（視需要）' : ''), pill(fd.state, STATE_TXT)));
+  // 已有進度（已完成／進行中／退回／不需走）就顯示進度；還沒到的站顯示「會不會走」預判
+  const U_FS = { done: ['yes', '已完成'], doing: ['unknown', '進行中'], returned: ['no', '退回補件'], skip: ['no', '不需走'] };
+  SCHEMA.flow.forEach((fl, i) => {
+    const fd = d.flow[fl.id], fsx = fsU.stations[i];
+    const pv = U_FS[fsx.state];
+    const li = h('li', { dataset: { flow: fl.id, state: fd.state, status: fsx.state } },
+      h('div', { class: 'pf-head' }, h('span', {}, h('b', { text: fl.id }), fl.name, fl.conditional ? '（視需要）' : ''), pv ? h('span', { class: 'pill ' + pv[0], text: pv[1] }) : pill(fd.state, STATE_TXT)));
     if (fl.id === 'F3' && fd.state !== 'no') li.append(h('div', { class: 'pf-sub', text: d.plan.basis }));
     if (fl.id === 'F6' && fd.state !== 'no') li.append(h('div', { class: 'pf-sub', text: '工程合約書（≧100 萬）：' + NEED_TXT[fd.contract] }));
     if (fl.id === 'F7' && fd.state !== 'no') li.append(h('div', { class: 'pf-sub', text: '工程進度表（工期 ≧2 週）：由工務處預估工期後決定' }));
@@ -2994,14 +3856,16 @@ function buildPro(role) {
   const secs = secsOf(role);
   const nav = h('nav', { class: 'pro-nav', 'aria-label': ROLES[role].name + '區段' },
     h('a', { href: '#sum-' + role, text: '填報摘要' }), h('a', { href: '#rules-' + role, text: '系統判定' }),
-    secs.map(s => h('a', { href: '#sec-' + s.id, text: s.id + ' ' + s.title })));
+    secs.map(s => h('a', { href: '#sec-' + s.id, dataset: { navSec: s.id }, text: s.id + ' ' + s.title })));
   const main = h('div', { class: 'pro-main' });
   main.append(h('details', { class: 'u-summary', id: 'sum-' + role, open: true }, h('summary', { text: ROLES.U.name + '填報摘要（唯讀）' }), h('div', { class: 'us-body' })));
   main.append(h('div', { class: 'rules-card', id: 'rules-' + role }));
   secs.forEach(s => {
     const grid = h('div', { class: 'grid' });
     s.fields.forEach(f => { const el = renderField(f, role); if (['textarea', 'matrix', 'checkbox', 'counts', 'signature'].includes(f.type) || (f.options && f.options.join('').length > 40)) el.classList.add('wide'); grid.append(el); });
-    main.append(h('section', { class: 'pro-sec', id: 'sec-' + s.id, dataset: { section: s.id } }, h('h2', { text: s.id + '　' + s.title }), h('p', { class: 'sec-intro', text: s.intro }), grid));
+    main.append(h('section', { class: 'pro-sec', id: 'sec-' + s.id, dataset: { section: s.id, stage: s.stage || null } },
+      h('h2', {}, s.id + '　' + s.title, s.stage ? h('span', { class: 'stage-tag', text: s.stage + ' 站紀錄' }) : null),
+      h('p', { class: 'sec-intro', text: s.intro }), grid));
   });
   v.append(h('div', { class: 'pro' }, nav, main));
 }
@@ -3009,26 +3873,193 @@ function renderProbar() {
   const pb = $('#probar'); pb.textContent = '';
   const m = state.mode;
   const tabs = h('div', { class: 'tabs', role: 'tablist' }, ['E', 'P'].map(r => h('button', { type: 'button', role: 'tab', 'aria-selected': String(m === r), dataset: { modeTab: r }, text: ROLES[r].name, onclick: () => setMode(r) })));
-  const sel = h('select', { id: 'statusSelect', 'aria-label': '流程站點' }, SCHEMA.flow.map(fl => h('option', { value: fl.id, text: fl.id + ' ' + fl.name, selected: fl.id === state.status })));
+  const fs = flowStatus(state);
+  selDirty = false;
+  // 下拉預設＝系統自動判定的目前站點（全部完成時停在最後一站）；人工仍可改選推進
+  const sel = h('select', { id: 'statusSelect', 'aria-label': '流程站點' }, FLOW.map(fl => h('option', { value: fl.id, text: fl.id + ' ' + fl.name, selected: fl.id === (fs.current || FLOW[FLOW.length - 1].id) })));
+  sel.addEventListener('change', () => { selDirty = true; renderProStatus(flowStatus(state)); });
   const note = h('textarea', { id: 'returnNote', rows: 1, placeholder: '退回補件說明（例：請補平面圖）', 'aria-label': '退回補件說明' });
-  pb.append(h('div', { class: 'pb-row' }, tabs, h('span', { class: 'pb-case', text: state.answers.projName || '未命名案件' }), h('span', { class: 'help', style: 'margin:0', text: '目前站點：' + state.status })));
+  pb.append(h('div', { class: 'pb-row' }, tabs, h('span', { class: 'pb-case', text: state.answers.projName || '未命名案件' }), h('span', { class: 'help pb-now', id: 'pbNow', style: 'margin:0' })));
   pb.append(h('div', { class: 'pb-row' },
     h('label', { for: 'statusSelect', class: 'help', style: 'margin:0', text: '推進流程站點' }), sel,
     h('button', { type: 'button', class: 'btn sm primary', id: 'btnAdvance', text: '更新站點', onclick: () => {
-      const id = sel.value, fl = SCHEMA.flow.find(x => x.id === id);
+      const id = sel.value, fl = FLOW[FLOW_IDX[id]];
+      const ah = aheadInfo(flowStatus(state), id);
       state.status = id; state.history.push({ role: m, action: '流程站點更新為 ' + id + ' ' + fl.name, time: nowStr() });
-      toast('已更新流程站點：' + id + ' ' + fl.name, 'good'); renderProbar(); renderPrint(); saveDraft();
+      if (ah) toast('已更新流程站點：' + id + ' ' + fl.name + '。提醒：' + ah.text + '。不阻擋推進，已記入交接紀錄。', 'warn');
+      else toast('已更新流程站點：' + id + ' ' + fl.name, 'good');
+      renderProbar(); renderFlow(); renderPrint(); saveDraft();
     } }),
     h('button', { type: 'button', class: 'btn sm', id: 'btnProDownload', text: '下載案件檔', onclick: () => downloadCase(m, ROLES[m].name + '下載案件檔（交接）') }),
     h('button', { type: 'button', class: 'btn sm', text: '列印', onclick: () => doPrint(false) })));
+  pb.append(h('div', { class: 'status-warn', id: 'statusWarn', role: 'status', hidden: true }));
   pb.append(h('div', { class: 'pb-row' }, note,
     h('button', { type: 'button', class: 'btn sm', id: 'btnReturn', text: '退回使用單位補件', onclick: () => {
+      const tg = returnTarget(flowStatus(state));
+      if (!tg.to) { toast('目前站點沒有退回站點（' + tg.why + '）。', 'warn'); return; }
       const t = note.value.trim(); if (!t) { toast('請先寫補件說明。', 'warn'); note.focus(); return; }
-      state.returned = { note: t, time: nowStr(), by: m };
-      state.status = 'F1';
-      state.history.push({ role: m, action: '退回使用單位補件', time: nowStr(), note: t });
-      toast('已退回並記錄，請下載案件檔交回使用單位。', 'good'); renderProbar(); renderPrint(); saveDraft();
-    } })));
+      const toU = tg.to === 'F1';
+      const action = toU ? '退回使用單位補件' : '退回 ' + tg.to + ' ' + FLOW[FLOW_IDX[tg.to]].name + ' 修正';
+      if (toU) state.returned = { note: t, time: nowStr(), by: m };
+      state.status = tg.to;
+      state.history.push({ role: m, action: action, time: nowStr(), note: t, kind: 'return', from: tg.from, to: tg.to });
+      toast(toU ? '已退回並記錄，請下載案件檔交回使用單位。' : '已退回 ' + tg.to + ' 修正並記錄。', 'good'); renderProbar(); renderFlow(); renderPrint(); saveDraft();
+    } }), h('span', { class: 'help', id: 'returnHint', style: 'margin:0;flex:1 1 220px', hidden: true })));
+  renderProStatus(fs);
+}
+let selDirty = false;
+// 退回目標＝目前站點的 reject；F1、F6–F8 沒有退回站點
+function returnTarget(fs) {
+  const from = fs.current;
+  if (!from) return { from: null, to: null, why: '各站皆已完成' };
+  if (fs.returned && fs.returned.to === from) return { from, to: null, why: '本站已是退回補件狀態，請待補件完成' };
+  const to = FLOW[FLOW_IDX[from]].reject;
+  return { from, to, why: to ? '' : from + ' ' + FLOW[FLOW_IDX[from]].name + ' 依程序書無退回站點' };
+}
+function flowNowText(fs) {
+  if (fs.returned) return fs.returned.to + ' ' + FLOW[FLOW_IDX[fs.returned.to]].name + '（退回補件）';
+  if (!fs.current) return '全部完成（' + fs.doneCount + ' 站完成' + (fs.skipCount ? '、' + fs.skipCount + ' 站不需走' : '') + '）';
+  return fs.current + ' ' + FLOW[fs.currentIdx].name + '（' + (fs.currentIdx + 1) + '/' + FLOW.length + '）';
+}
+function renderProStatus(fs) {
+  const now = $('#pbNow'); if (!now) return;
+  now.textContent = '';
+  now.append('目前站點（系統判定）：', h('b', { text: flowNowText(fs) }), state.status && state.status !== (fs.current || FLOW[FLOW.length - 1].id) ? '｜人工登錄：' + state.status : '');
+  const sel = $('#statusSelect');
+  if (sel) {
+    $$('option', sel).forEach(o => { const st = fs.stations[FLOW_IDX[o.value]]; o.textContent = o.value + ' ' + st.name + (fs.current === o.value ? '（目前）' : st.state === 'done' ? '（已完成）' : st.state === 'skip' ? '（不需走）' : ''); });
+    if (!selDirty && document.activeElement !== sel) sel.value = fs.current || FLOW[FLOW.length - 1].id;
+  }
+  const w = $('#statusWarn');
+  if (w) {
+    const target = selDirty && sel ? sel.value : state.status;
+    const ah = aheadInfo(fs, target);
+    w.textContent = ah ? (selDirty ? '你選的 ' : '已登錄的 ') + target + ' 超前系統判定的目前站點 ' + fs.current + '：' + ah.text + '。可照常推進，不會阻擋。' : '';
+    w.hidden = !ah;
+  }
+  const rh = $('#returnHint');
+  if (rh) { const no = state.answers.f4Result === FIELDS.f4Result.options[1]; rh.hidden = !no; rh.textContent = no ? 'F4 核決不同意：如需使用單位修改需求，請先退回 F2，再由工務處退回使用單位。' : ''; }
+  const rb = $('#btnReturn');
+  if (rb) {
+    const tg = returnTarget(fs);
+    rb.disabled = !tg.to;
+    rb.textContent = !tg.to ? '退回補件（' + tg.why + '）' : tg.to === 'F1' ? '退回使用單位補件' : '退回 ' + tg.to + ' ' + FLOW[FLOW_IDX[tg.to]].name + ' 修正';
+  }
+}
+
+/* ───── 流程進度軌與站點詳情（三畫面共用） ───── */
+let flowOpen = null;
+function renderFlow() {
+  const box = $('#flowTrack'); if (!box) return;
+  const on = ['U', 'E', 'P'].includes(state.mode);
+  box.hidden = !on;
+  if (!on) return;
+  const fs = flowStatus(state);
+  const now = $('#ftNow');
+  const nowTxt = flowNowText(fs);
+  if (now.dataset.txt !== nowTxt) {
+    now.dataset.txt = nowTxt; now.textContent = '';
+    now.append(fs.current || fs.returned ? '目前：' : '', h('b', { text: nowTxt }));
+    now.classList.toggle('ret', !!fs.returned);
+  }
+  const ol = $('#ftNodes'); ol.textContent = '';
+  fs.stations.forEach(s => {
+    const isCur = fs.current === s.id;
+    const meta = s.state === 'skip' ? '不需走（略過）' : FSTATE_TXT[s.state] + '・' + s.met + '/' + s.total + (isCur && !s.started && s.state === 'doing' ? '・尚未登錄' : '');
+    ol.append(h('li', {}, h('button', { type: 'button', class: 'fnode', dataset: { fnode: s.id, fstate: s.state, started: String(s.started) }, 'aria-expanded': String(flowOpen === s.id), 'aria-controls': 'flowDetail', 'aria-current': isCur ? 'step' : null,
+      title: s.id + ' ' + s.name + '：' + FSTATE_TXT[s.state] + '（點選看詳情）', onclick: () => toggleFlow(s.id) },
+      h('span', { class: 'fn-top' }, h('span', { class: 'fn-ic', 'aria-hidden': 'true', text: FSTATE_ICON[s.state] }), h('span', { class: 'fn-id', text: s.id }), isCur ? h('span', { class: 'fn-cur', text: '目前' }) : null),
+      h('span', { class: 'fn-name', text: s.name }),
+      h('span', { class: 'fn-meta', text: meta }))));
+  });
+  renderFlowDetail(fs);
+  renderProStatus(fs);
+}
+function toggleFlow(id) {
+  flowOpen = flowOpen === id ? null : id;
+  renderFlow();
+  const b = id && $('[data-fnode="' + id + '"]'); if (b) try { b.focus({ preventScroll: true }); } catch (e) {}
+  if (flowOpen) { const d = $('#flowDetail'); if (d && d.getBoundingClientRect().bottom > innerHeight) d.scrollIntoView({ block: 'nearest' }); }
+}
+function renderFlowDetail(fs) {
+  const p = $('#flowDetail'); p.textContent = '';
+  const s = flowOpen && fs.stations[FLOW_IDX[flowOpen]];
+  if (!s) { p.hidden = true; delete p.dataset.fdetail; return; }
+  const fl = FLOW[s.idx], U = state.mode === 'U';
+  const tx = t => U ? plain(t) : t;
+  p.hidden = false; p.dataset.fdetail = s.id;
+  const isCur = fs.current === s.id;
+  p.append(h('div', { class: 'fd-head' }, h('h3', { text: s.id + '　' + s.name }), h('span', { class: 'fst', dataset: { fstate: s.state }, text: FSTATE_TXT[s.state] }),
+    isCur ? h('span', { class: 'fn-cur', text: '目前站點' }) : null,
+    h('button', { type: 'button', class: 'btn sm fd-close', id: 'fdClose', text: '收合', onclick: () => toggleFlow(null) })));
+  if (fs.returned && fs.returned.to === s.id) p.append(h('p', { class: 'fd-note warn', text: '退回補件' + (fs.returned.from ? '（由 ' + fs.returned.from + ' 退回）' : '') + '：' + (fs.returned.note || '未附說明') + (fs.returned.time ? '｜' + fs.returned.time : '') }));
+  else if (s.state === 'skip') p.append(h('p', { class: 'fd-note', text: '本案不需走這一站：「' + FIELDS[fl.skipIf.f].label + '」為「' + fl.skipIf.eq + '」。' }));
+  else if (isCur && !s.started) p.append(h('p', { class: 'fd-note', text: '這一站還沒有登錄任何資料（前面各站已完成或不需走）。' }));
+  const blk = (t, ...kids) => h('div', { class: 'fd-blk' }, h('h4', { text: t }), ...kids);
+  const secItems = (fl.sections || []).map(sid => {
+    const sec = SEC_BY_ID[sid];
+    const off = sec.showIf && !showIfOk(sec);
+    return h('li', { class: off ? 'off' : '' },
+      h('button', { type: 'button', class: 'fd-link', dataset: { gotoSec: sid }, text: sid + ' ' + sec.title, onclick: () => gotoSection(sid) }),
+      sec.role !== state.mode ? h('span', { class: 'fd-sw', text: '切換到' + roleShort(sec.role) + '檢視' }) : null,
+      off ? h('span', { class: 'ftag noneed', text: '本案免填' }) : null);
+  });
+  const NEED = { yes: ['need', '本案需要'], no: ['noneed', '本案不需要'], pending: ['pend', '視條件（待判定）'] };
+  const formItems = s.forms.map(fm => h('li', { class: fm.need === 'no' ? 'off' : '', dataset: { form: fm.name, need: fm.need } },
+    h('span', { text: fm.name }), fm.code ? h('span', { class: 'ftag code', text: fm.code }) : null,
+    h('span', { class: 'f-when', text: fm.when }), NEED[fm.need] ? h('span', { class: 'ftag ' + NEED[fm.need][0], text: NEED[fm.need][1] }) : null));
+  const condItems = s.conds.map(c => h('li', { dataset: { cond: c.label, ok: c.pending ? 'pending' : String(c.ok) } },
+    h('span', { class: 'fd-mk ' + (c.ok ? 'ok' : c.pending ? 'pend' : 'no'), 'aria-hidden': 'true', text: c.ok ? '✓' : c.pending ? '預' : '✗' }),
+    h('span', { class: 'sr-only', text: c.ok ? '已達成：' : c.pending ? '系統預標待確認：' : '未達成：' }), h('span', { text: condLabel(c) }),
+    c.pending ? h('span', { class: 'fd-pend', text: '系統預標：' + c.value + '，待確認' }) : null,
+    !c.ok && c.f ? h('button', { type: 'button', class: 'fd-go' + (c.pending ? ' pend' : ''), dataset: { gotoField: c.f }, text: c.pending ? '前往確認' : '前往填寫', onclick: () => jumpField(c.f) }) : null));
+  const pendConds = s.conds.filter(c => c.pending);
+  const canConfirm = pendConds.length && (state.mode === 'E' || state.mode === 'P');
+  const confirmBtn = pendConds.length ? h('div', { class: 'fd-confirm' },
+    canConfirm ? h('button', { type: 'button', class: 'btn sm', id: 'btnConfirmAuto', dataset: { confirmStation: s.id }, text: '確認本站所有系統預標（' + pendConds.length + ' 項）', onclick: () => confirmStation(s.id) })
+      : h('span', { class: 'help', text: '有 ' + pendConds.length + ' 項為系統預標，待工務處／PCM 確認。' })) : null;
+  const nm = id => id ? id + ' ' + FLOW[FLOW_IDX[id]].name : '無';
+  p.append(h('div', { class: 'fd-grid' },
+    blk('這一站做什麼', h('p', { text: tx(fl.action) })),
+    blk('誰負責', h('p', { text: fl.owner + '（本表由' + ROLES[fl.roleKey].name + '登錄）' })),
+    blk('本表對應節次（點選前往）', h('ul', { class: 'fd-list' }, secItems)),
+    blk('應附表單', h('ul', { class: 'fd-list' }, formItems)),
+    blk('完成條件（' + (s.state === 'skip' ? '略過' : s.met + '/' + s.total) + '）', h('ul', { class: 'fd-list' }, condItems), confirmBtn),
+    blk('下一站／退回', h('p', { text: '下一站：' + nm(s.next) + '｜退回：' + nm(s.reject) }), U ? null : h('p', { class: 'help', style: 'margin:4px 0 0', text: '程序書：61-P-029 ' + fl.sopRef }))));
+}
+// 一鍵確認：把本站完成條件涉及的系統預標轉為已確認（等同工務處／PCM 動過該欄），並記入交接紀錄
+function confirmStation(id) {
+  const fs = flowStatus(state), s = fs.stations[FLOW_IDX[id]];
+  const pend = s.conds.filter(c => c.pending);
+  if (!pend.length) return;
+  pend.forEach(c => c.pendKeys.forEach(k => { state.manual[k] = true; }));
+  const m = state.mode === 'E' || state.mode === 'P' ? state.mode : 'E';
+  state.history.push({ role: m, action: '確認 ' + id + ' ' + s.name + ' 系統預標：' + pend.map(c => c.label + '（' + c.value + '）').join('、'), time: nowStr() });
+  toast('已確認 ' + id + ' 的系統預標 ' + pend.length + ' 項，並記入交接紀錄。', 'good');
+  refresh();
+}
+// 欄位旁「確認預標」：值不變，只標為已確認
+function confirmField(fid) {
+  unconfirmedKeys(fid, state).forEach(k => { state.manual[k] = true; });
+  refresh();
+}
+function gotoSection(sid) {
+  const sec = SEC_BY_ID[sid]; if (!sec) return;
+  if (sec.role === 'U') { if (state.mode !== 'U') setMode('U'); goStep(U_SECS.indexOf(sec)); return; }
+  if (state.mode !== sec.role) setMode(sec.role);
+  const el = $('#sec-' + sid);
+  if (!el || el.hidden) { toast(sid + ' ' + sec.title + '：本案免填（' + secCondText(sec) + '）。', 'warn'); return; }
+  el.scrollIntoView({ block: 'start' });
+}
+function jumpField(fid) {
+  const sec = FIELD_SEC[fid]; if (!sec) return;
+  if (sec.role === 'U') { if (state.mode !== 'U') setMode('U'); goToField(fid); return; }
+  if (state.mode !== sec.role) setMode(sec.role);
+  const se = $('#sec-' + sec.id), w = $('#view-' + sec.role + ' [data-field="' + fid + '"]');
+  if (!w || (se && se.hidden) || w.classList.contains('is-off')) { toast(FIELDS[fid].label + '：本案目前免填。', 'warn'); return; }
+  w.scrollIntoView({ block: 'center' });
+  w.classList.add('flash'); setTimeout(() => w.classList.remove('flash'), 2400);
+  const fc = $('input,textarea', w); if (fc) try { fc.focus({ preventScroll: true }); } catch (e) {}
 }
 function renderSummaries() {
   ['E', 'P'].forEach(r => {
@@ -3125,10 +4156,11 @@ function renderPrint(opts) {
   const root = $('#print'); root.textContent = '';
   const a = blank ? normalize({}) : state.answers;
   const d = evaluate(a);
+  const fsP = blank ? null : flowStatus(state);
   const head = () => h('thead', {}, h('tr', {}, h('td', {}, h('div', { class: 'ph' },
     h('img', { src: $('#topbar .logo').getAttribute('src'), alt: 'Landseed' }),
     h('div', { class: 'ph-t' }, h('div', { class: 'ph-n', text: META.formName }), h('div', { class: 'ph-s', text: '版次 ' + META.version + '｜依據 ' + META.basis })),
-    h('div', { class: 'ph-r' }, h('div', { text: '工程名稱：' + (blank ? '' : (a.projName || '')) }), h('div', { text: blank ? '流程站點：' : '流程站點：' + state.status + '｜列印 ' + today() }))))));
+    h('div', { class: 'ph-r' }, h('div', { text: '工程名稱：' + (blank ? '' : (a.projName || '')) }), h('div', { text: blank ? '流程站點：' : '流程站點：' + flowNowText(fsP) + '｜列印 ' + today() }))))));
   const foot = () => h('tfoot', {}, h('tr', {}, h('td', {}, h('div', { class: 'pf' }, h('span', { text: META.copyright }), h('span', { text: META.formName + ' ' + META.version })))));
   ['U', 'E', 'P'].forEach(role => {
     const body = h('td', {});
@@ -3137,10 +4169,12 @@ function renderPrint(opts) {
     if (role === 'U') body.append(h('ul', { class: 'p-notes' }, META.notes.map(n => h('li', { text: n }))));
     const box = h('div', { class: fill });
     secsOf(role).forEach(s => {
-      box.append(h('h3', { class: 'p-sec-h' }, s.id + '　' + s.title, h('small', { text: s.intro })));
+      const secOn = blank || showIfOk(s, a);
+      box.append(h('h3', { class: 'p-sec-h', dataset: { psec: s.id } }, s.id + '　' + s.title, s.stage ? h('span', { class: 'stg', text: s.stage + ' 站紀錄' }) : null, h('small', { text: s.intro }),
+        s.showIf ? h('small', { text: '（' + secCondText(s) + (secOn ? '' : '；本案免填') + '）' }) : null));
       const tb = h('table', { class: 'ps' });
       s.fields.forEach(f => {
-        const on = blank || showIfOk(f, a);
+        const on = secOn && (blank || showIfOk(f, a));
         const th = h('th', {}, f.required ? h('span', { class: 'reqm', text: '＊' }) : null, f.label, f.unit && f.type !== 'number' && f.type !== 'counts' ? '（' + f.unit + '）' : null, f.sopRef ? h('span', { class: 'ref', text: ' ' + f.sopRef }) : null, f.showIf ? h('span', { class: 'cond', text: '（' + condText(f) + '）' }) : null);
         const tr = h('tr', { class: on ? 'p-row' : 'p-row off', dataset: { pfield: f.id } }, th);
         if (on) tr.append(!blank && flexOn(f.id) ? h('td', { text: fmtA(f) }) : pValue(f, a[f.id], blank));
@@ -3160,6 +4194,9 @@ function renderPrint(opts) {
     if (role === 'P' && !blank) {
       const r = RULES.R_ACCEPT;
       box.append(h('div', { class: 'p-sys' }, h('div', { class: 'act', text: '系統判定｜' + r.name + '（' + d.accept.basis + '）' }), d.accept.index === null ? '待工務處初估金額後判定' : r.logic[d.accept.index]));
+    }
+    if (role === 'P') box.append(printFlowTable(fsP));
+    if (role === 'P' && !blank) {
       if (state.history.length) {
         const ht = h('table', { class: 'ps' }, h('tr', {}, h('th', { text: '時間', style: 'width:28%' }), h('th', { text: '角色／動作', style: 'width:72%' })));
         state.history.forEach(x => ht.append(h('tr', {}, h('td', { text: x.time }), h('td', { text: (ROLES[x.role] ? ROLES[x.role].name : x.role) + '：' + x.action + (x.note ? '（' + x.note + '）' : '') }))));
@@ -3169,6 +4206,23 @@ function renderPrint(opts) {
     body.append(box);
     root.append(h('table', { class: 'pt', dataset: { prole: role } }, head(), foot(), h('tbody', {}, h('tr', {}, body))));
   });
+}
+// 列印「流程狀態總覽」：有案件依表單內容判定；空白表留勾選格
+function printFlowTable(fs) {
+  const wrap = h('div', { id: 'printFlow' });
+  wrap.append(h('h3', { class: 'p-sec-h' }, '流程狀態總覽', h('small', { text: fs ? '依表單內容自動判定（列印 ' + today() + '）；' + FLOW_RULE_TXT : '請依各站完成條件人工勾記' })));
+  const t = h('table', { class: 'pfl' }, h('tr', {}, h('th', { text: '站點', style: 'width:24%' }), h('th', { text: '狀態', style: 'width:15%' }), h('th', { text: '完成條件達成', style: 'width:40%' }), h('th', { text: '負責', style: 'width:21%' })));
+  FLOW.forEach((fl, i) => {
+    const s = fs && fs.stations[i];
+    const unmet = s ? s.conds.filter(c => !c.ok).map(condLabel) : [];
+    t.append(h('tr', { dataset: { pflow: fl.id } },
+      h('td', { text: fl.id + ' ' + fl.name + (fl.conditional ? '（視需要）' : '') }),
+      h('td', { class: s ? 'st-' + s.state : '', text: s ? FSTATE_TXT[s.state] + (fs.current === s.id ? '（目前）' : '') : '☐ 已完成　☐ 不需走' }),
+      h('td', { text: s ? (s.state === 'skip' ? '—（' + FIELDS[fl.skipIf.f].label + '：' + fl.skipIf.eq + '）' : s.met + '/' + s.total + (unmet.length ? '；未達成：' + unmet.join('、') : '') ) : (fl.done || []).map(c => '☐ ' + c.label).join('　') }),
+      h('td', { text: fl.owner })));
+  });
+  wrap.append(t);
+  return wrap;
 }
 function doPrint(blank) {
   renderPrint({ blank: blank });
@@ -3180,6 +4234,11 @@ function doPrint(blank) {
 /* ───── 初始化 ───── */
 const api = {
   evaluate, exportCase, importCase, setMode, goStep: i => goStep(i), renderPrint,
+  flowStatus: st => JSON.parse(JSON.stringify(flowStatus(st || state))),
+  aheadInfo: (id, st) => aheadInfo(flowStatus(st || state), id),
+  isFilled: (id, v) => filledFor(FIELDS[id], v),
+  confirmStation: id => confirmStation(id),
+  toggleFlow: id => toggleFlow(id),
   getAnswers: () => JSON.parse(JSON.stringify(state.answers)),
   setAnswer: (id, v) => setAnswer(id, v, true),
   get state() { return state; },
@@ -3193,6 +4252,8 @@ function init() {
   $('#siteFoot').textContent = META.copyright;
   try { localStorage.getItem('__probe__'); } catch (e) { storageFail(); }
   buildU(); buildPro('E'); buildPro('P');
+  $('#ftLegend').append(...['done', 'doing', 'todo', 'skip', 'returned'].map(k => h('span', {}, h('span', { class: 'fn-ic ' + k, text: FSTATE_ICON[k] }), FSTATE_TXT[k])));
+  $('#ftToggle').addEventListener('click', () => { const t = $('#flowTrack'), o = !t.classList.contains('open'); t.classList.toggle('open', o); $('#ftToggle').setAttribute('aria-expanded', String(o)); $('#ftToggle').textContent = o ? '收合' : '展開'; });
   $('#btnHome').addEventListener('click', () => { saveDraft(); setMode('home'); });
   $('#btnPrint').addEventListener('click', () => doPrint(false));
   $('#btnEipClose').addEventListener('click', closeEip);
@@ -3207,7 +4268,9 @@ function init() {
    在主程式 IIFE 內執行，可直接使用 state、loadCaseObj、setMode 等。所有範例資料皆為虛構。 */
 {
   const DM_PREFIX = 'demo:'; // 與 LS_KEY 前綴一致（build_demo.py 注入 /*__LS_PREFIX__*/）
-  const D = days => { const d = new Date(); d.setDate(d.getDate() + days); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); };
+  // shift：情境整體往前平移的天數（施工中、結案情境把前段流程推到更早，讓施工／驗收日期落在近期）
+  let shift = 0;
+  const D = days => { const d = new Date(); d.setDate(d.getDate() + days + shift); return d.getFullYear() + '-' + pad2(d.getMonth() + 1) + '-' + pad2(d.getDate()); };
   const T = (days, hm) => D(days) + ' ' + hm + ':00';
   // 依開頭字串取選項原文；找不到直接丟錯，避免範例資料默默對不上 schema
   const O = (id, head) => { const o = FIELDS[id].options.find(x => x === head || x.indexOf(head) === 0); if (!o) throw new Error('demo option not found: ' + id + ' ' + head); return o; };
@@ -3230,6 +4293,9 @@ function init() {
     return (sigCache[name] = c.toDataURL('image/png'));
   }
   const sig = (name, days) => ({ name: name, date: D(days), img: sigImg(name) });
+
+  // 法規 7 列全部給判定值（完成條件要求每列都有值）；未列者＝不需要
+  const LAW = m => { const o = {}; FIELDS.lawItems.rows.forEach(r => { const x = m[r.id]; o[r.id] = { v: x ? x[0] : '不需要', note: x ? x[1] || '' : '' }; }); return o; };
 
   /* ── 大案：本館 6F 透析室擴充 4 床並整修護理站 ── */
   function bigU() {
@@ -3274,6 +4340,7 @@ function init() {
       power: OS('power', ['單相', '需專用迴路', '需緊急電源', '既有盤容量足夠']),
       gasJudge: OS('gasJudge', ['接既有幹管', '需區域關斷閥']),
       capNote: '灑水頭需配合新隔間移設；RO 供水迴路由既有機房延伸約 25 公尺。',
+      lawItems: LAW({ law_interior: ['需要', '新增隔間與天花'], law_fire: ['需要', '灑水頭移設'], law_health: ['需要', '透析床數 20→24'], law_license: ['需要', '備品區改透析區'], law_env: ['需要', '透析廢液'] }),
       designMode: O('designMode', '委外設計'),
       costDesign: 80000, costSeal: 60000, costWork: 1400000, costOther: 60000,
       specialMat: O('specialMat', '無'),
@@ -3294,6 +4361,17 @@ function init() {
       pSign: sig('張 PCM', -1),
     };
   }
+  // F3 院區規劃管理中心審核、F4 核決（工務處登錄）
+  const bigX3 = () => ({ f3Date: D(-9), f3Result: O('f3Result', '審核通過'), f3Note: '委外設計圖已送審，同意依設計圖辦理。' });
+  const bigX4 = () => ({ f4Date: D(-6), f4Result: O('f4Result', '同意'), f4Approver: '（虛構）李副院長', f4Note: '同意，請 PCM 召開設計確認會議。' });
+  // F7 施工管理（PCM 登錄）：done＝已完工
+  const bigX7 = done => Object.assign({
+    f7Kickoff: D(2), f7OshDocs: O('f7OshDocs', '已於施工前一週'), f7Announce: D(9), f7Posted: O('f7Posted', '已完成'), f7Start: D(12),
+    f7Records: OS('f7Records', ['工程日報表', '工程進度表', '工程材料審查']),
+  }, done ? { f7Finish: D(40), f7Records: OS('f7Records', ['工程日報表', '工程進度表', '工程材料審查', '工程變更申請單']) } : {});
+  // F8 驗收、點交、付款（PCM 登錄）
+  const bigX8 = () => ({ f8Cert: O('f8Cert', '廠商已提出'), f8Inspect: D(43), f8Result: O('f8Result', '初驗合格'), f8Record: O('f8Record', '已完成'), f8Handover: D(50), f8Paid: O('f8Paid', '已送採購部門請款') });
+
   /* ── 小案：門診 2F 換地板與插座（約 20 萬） ── */
   function smallAll() {
     return Object.assign({
@@ -3325,6 +4403,8 @@ function init() {
       designMode: O('designMode', '工務處自行設計'),
       costDesign: 0, costSeal: 0, costWork: 190000, costOther: 0, specialMat: O('specialMat', '無'),
       eNote: '小型營繕，工務處自行設計，例假日施工。', eSign: sig('林工程師', -6),
+      lawItems: LAW({ law_interior: ['待確認', '僅更換同規格地板，會勘確認免申請'], law_env: ['需要', '地板膠異味，週末施工並加強通風'] }),
+      f4Date: D(-6), f4Result: O('f4Result', '同意'), f4Approver: '（虛構）門診部主任', f4Note: '同意，例假日施工。',
       designMeeting: D(-4), designCheck: OS('designCheck', ['電源與插座']),
       designSigned: O('designSigned', '已簽認'), facilityConfirm: O('facilityConfirm', '已簽核'), bidListReview: O('bidListReview', '已完成'),
       awardAmt: 18, quoteCount: O('quoteCount', '二家以上'),
@@ -3337,7 +4417,7 @@ function init() {
 
   const U_DONE = ROLES.U.name + '完成填報並下載案件檔（送' + ROLES.E.name + '）';
   const H = (role, action, time, note) => note ? { role: role, action: action, time: time, note: note } : { role: role, action: action, time: time };
-  const HIST_BIG = [
+  const histBig = () => [
     H('U', U_DONE, T(-18, '10:20')),
     H('E', '工務處開啟案件檔', T(-15, '09:05')),
     H('E', FL('F2'), T(-15, '09:06')),
@@ -3346,21 +4426,33 @@ function init() {
     H('E', FL('F3'), T(-10, '16:45')),
     H('E', '工務處下載案件檔（交接）', T(-10, '16:46')),
     // ↑ (c) 到此
-    H('E', '院區規劃管理中心審核通過（工務處登錄）', T(-7, '11:10'), '送審原因：委外設計（需設計師提供設計圖）'),
+    H('E', '院區規劃管理中心審核通過（工務處登錄於 X3）', T(-7, '11:10'), '送審原因：委外設計（需設計師提供設計圖）'),
     H('E', FL('F4'), T(-7, '11:12')),
-    H('E', '核決主管核准（工務處登錄）', T(-6, '15:30')),
+    // ↑ (c) 到此
+    H('E', '核決主管核准（工務處登錄於 X4）', T(-6, '15:30')),
     H('P', 'PCM 開啟案件檔', T(-5, '09:00')),
     H('P', FL('F5'), T(-5, '09:01')),
     H('P', '設計確認會議完成，使用單位最高主管已於設計圖簽認', T(-3, '14:20')),
     H('P', FL('F6'), T(-1, '10:00')),
     H('P', '詢議價完成，登錄決標金額 148 萬元', T(-1, '10:05')),
+    // ↑ (d) 到此
+    H('P', FL('F7'), T(2, '09:00')),
+    H('P', '專案協調會完成；承攬商安全衛生承諾書與危害因素告知單已繳交', T(2, '11:00')),
+    H('P', 'EIP 全院公告並通知職安中心與鄰近單位；前一日張貼施工告示與圍籬', T(9, '17:00')),
+    H('P', '開工（夜間施工）', T(12, '20:00')),
+    // ↑ (e) 到此
+    H('P', '完工，廠商提出工程完工證明書', T(40, '08:30')),
+    H('P', FL('F8'), T(40, '09:00')),
+    H('P', '初驗合格，工程完工驗收紀錄表簽核完成', T(43, '15:00')),
+    H('P', '點交／移交完成（工程點交／移交清冊）', T(50, '10:00')),
+    H('P', '已送採購部門請款', T(52, '10:00')),
   ];
-  const HIST_SMALL = [
+  const histSmall = () => [
     H('U', U_DONE, T(-9, '14:00')),
     H('E', FL('F2'), T(-8, '09:30')),
     H('E', '會勘完成：小型營繕、初估 19 萬元、工期 4 日；不需送院區規劃管理中心', T(-7, '11:00')),
     H('E', FL('F4'), T(-7, '11:05')),
-    H('E', '核決主管核准（工務處登錄）', T(-6, '16:00')),
+    H('E', '核決主管核准（工務處登錄於 X4）', T(-6, '16:00')),
     H('P', FL('F5'), T(-5, '09:00')),
     H('P', FL('F6'), T(-2, '10:00')),
     H('P', '詢議價完成，登錄決標金額 18 萬元', T(-2, '10:10')),
@@ -3369,9 +4461,11 @@ function init() {
   const SCEN = [
     { id: 'blank', label: '(a) 空白開始', title: '使用單位從頭填寫', role: 'U' },
     { id: 'f2', label: '(b) 已送出・待會勘', title: '使用單位已填完並簽名，待工務處會勘（F2）', role: 'E', status: 'F2', answers: () => bigU(), hist: 3 },
-    { id: 'f3', label: '(c) 工務處已判定', title: '工務處已判定，待院區規劃管理中心審核／核決（F3）', role: 'E', status: 'F3', answers: () => Object.assign(bigU(), bigE()), hist: 6 },
-    { id: 'f6', label: '(d) 標單完成', title: 'PCM 設計確認與標單完成，發包中（F6），可看驗收簽核流程', role: 'P', status: 'F6', answers: () => Object.assign(bigU(), bigE(), bigP()), hist: HIST_BIG.length },
-    { id: 'small', label: '對照：小案約 20 萬', title: '門診 2F 換地板與插座：小型、免合約、驗收 8–20 萬（F6）', role: 'P', status: 'F6', answers: smallAll, history: HIST_SMALL },
+    { id: 'f3', label: '(c) 工務處已判定', title: '工務處已判定、院區規劃管理中心審核通過（F3 完成），待核決（F4）', role: 'E', status: 'F4', confirm: ['E'], answers: () => Object.assign(bigU(), bigE(), bigX3()), hist: 8 },
+    { id: 'f6', label: '(d) 標單完成', title: 'PCM 設計確認與標單完成（F6 已完成），待施工（F7 未開始），可看驗收簽核流程', role: 'P', status: 'F6', confirm: ['E', 'P'], answers: () => Object.assign(bigU(), bigE(), bigX3(), bigX4(), bigP()), hist: 14 },
+    { id: 'f7', label: '(e) 施工中', title: '已公告、已開工、尚未完工（F7 進行中）', role: 'P', status: 'F7', shift: -20, confirm: ['E', 'P'], answers: () => Object.assign(bigU(), bigE(), bigX3(), bigX4(), bigP(), bigX7(false)), hist: 18 },
+    { id: 'f8', label: '(f) 驗收結案', title: '驗收合格、點交並送請款（F1–F8 全部完成）', role: 'P', status: 'F8', shift: -60, confirm: ['E', 'P'], answers: () => Object.assign(bigU(), bigE(), bigX3(), bigX4(), bigP(), bigX7(true), bigX8()), hist: 23 },
+    { id: 'small', label: '對照：小案約 20 萬', title: '門診 2F 換地板與插座：小型、F3 不需走、免合約、驗收 8–20 萬（F6 已完成）', role: 'P', status: 'F6', confirm: ['E', 'P'], answers: smallAll, history: histSmall },
   ];
   let curScen = null;
 
@@ -3393,14 +4487,24 @@ function init() {
       toast('已載入情境 ' + sc.label + '：' + sc.title + '。', 'good');
       return;
     }
+    shift = sc.shift || 0;
+    const ans = sc.answers(), hist = sc.history ? sc.history() : histBig().slice(0, sc.hist);
+    shift = 0;
     loadCaseObj({
-      answers: sc.answers(), manual: {}, auto: {}, flags: {}, legacy: {},
-      history: sc.history ? sc.history.slice() : HIST_BIG.slice(0, sc.hist),
-      status: sc.status, returned: null, step: STEPS, sub: 0,
+      answers: ans, manual: {}, auto: {}, flags: {}, legacy: {},
+      history: hist, status: sc.status, returned: null, step: STEPS, sub: 0,
     });
     curScen = id;
     syncAll(); renderPrint(); saveDraft();
     setMode(sc.role);
+    // 已判定過的情境：工務處／PCM 已確認系統預標（(b) 待會勘維持「預標待確認」）
+    if (sc.confirm) {
+      SCHEMA.sections.filter(x => sc.confirm.includes(x.role)).forEach(x => x.fields.forEach(f => {
+        if (!f.derivedHint) return;
+        (f.type === 'matrix' ? f.rows.map(r => f.id + '.' + r.id) : [f.id]).forEach(k => { if (state.auto[k]) state.manual[k] = true; });
+      }));
+      refresh();
+    }
     saveDraft();
     toast('已載入情境 ' + sc.label + '：' + sc.title + '。', 'good');
   }
@@ -3458,10 +4562,9 @@ function init() {
   function renderBar() {
     const cur = $('#demoCur'); if (!cur) return;
     const m = state.mode;
-    const fl = SCHEMA.flow.find(x => x.id === state.status);
     cur.textContent = '';
     cur.append('目前：', h('b', { text: m === 'home' ? '首頁' : roleShort(m) }),
-      hasCase() ? '｜站點 ' + state.status + ' ' + (fl ? fl.name : '') + '｜' + (state.answers.projName || '未命名案件') : (m === 'U' ? '｜空白新案' : ''));
+      hasCase() ? '｜站點 ' + flowNowText(flowStatus(state)) + '｜' + (state.answers.projName || '未命名案件') : (m === 'U' ? '｜空白新案' : ''));
     $$('#demoBar [data-demo-role]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.demoRole === m)));
     $$('#demoBar [data-demo-scen]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.demoScen === curScen)));
   }
@@ -3488,8 +4591,9 @@ function init() {
       h('ol', {},
         h('li', {}, h('b', { text: '以使用單位身分填：' }), '從空白開始，照 8 個步驟回答；畫面下方「接下來會怎麼走」會依回答即時預判。', go('開始填寫', () => loadScenario('blank'), 'demoGo1')),
         h('li', {}, h('b', { text: '切工務處看預標：' }), '載入透析室擴充案（初估 160 萬），看系統自動預標工程類別、送審、法規、感控、職安、合約與進度表。', go('看工務處判定', () => loadScenario('f3'), 'demoGo2')),
-        h('li', {}, h('b', { text: '切 PCM 看驗收流程：' }), '決標 148 萬後，看驗收會驗與簽核鏈、交接紀錄；再按「對照：小案約 20 萬」比較小型案件的路徑。', go('看 PCM 驗收流程', () => loadScenario('f6'), 'demoGo3')),
+        h('li', {}, h('b', { text: '切 PCM 看驗收流程：' }), '決標 148 萬後，看驗收會驗與簽核鏈、交接紀錄；再依序按「(e) 施工中」「(f) 驗收結案」看流程走完，或按「對照：小案約 20 萬」比較小型案件（F3 不需走）的路徑。', go('看 PCM 驗收流程', () => loadScenario('f6'), 'demoGo3')),
         h('li', {}, h('b', { text: '列印紙本：' }), '按頁首「列印」看三方合一的紙本（含系統判定與交接紀錄），可另存 PDF。', go('列印目前案件', () => { if (!hasCase()) loadScenario('f6'); doPrint(false); }, 'demoGo4'))),
+      h('p', { class: 'help', id: 'demoFlowHint', text: '頁面上方的流程進度軌會依填寫內容即時變化：F1–F8 各站顯示已完成、進行中、未開始或不需走，點任一站可看這一站做什麼、應附表單與完成條件。' }),
       h('p', { class: 'help', text: '頁首下方的 Demo 控制列可隨時切換角色、載入情境或重置。本頁所有人名、分機、成本代碼與 EIP 單號皆為虛構範例；草稿只存在你這台瀏覽器。' }));
     home.insertBefore(guide, home.children[1] || null);
   };
@@ -3503,7 +4607,7 @@ function init() {
   };
   api.setMode = m => setMode(m);
   api.renderPrint = o => renderPrint(o);
-  api.demo = { loadScenario, resetDemo, role: demoRole, lsKey: LS_KEY, scenarios: SCEN.map(x => ({ id: x.id, label: x.label, role: x.role, status: x.status || 'F1' })), get current() { return curScen; } };
+  api.demo = { loadScenario, resetDemo, role: demoRole, lsKey: LS_KEY, scenarios: SCEN.map(x => ({ id: x.id, label: x.label, title: x.title, role: x.role, status: x.status || 'F1' })), get current() { return curScen; } };
 }
 
 init();
