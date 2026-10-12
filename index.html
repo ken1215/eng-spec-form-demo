@@ -1226,7 +1226,7 @@ textarea.inp{min-height:96px;resize:vertical}
       "敲地板、牆面開大洞或動到柱子",
       "移動或新增灑水頭、偵測器、逃生門、緊急照明",
       "改變房間用途（例：儲藏室改診間）或增減診間／病床數",
-      "改變門面、大廳、走廊等公共區域的外觀",
+      "改變門面、大廳、走廊等公共區域，或自費服務區（如健檢、自費門診、VIP 病房）的外觀或風格",
       "動到廁所、坡道、扶手或電梯",
       "動到冷氣出風口或空調機",
       "會有明顯油漆、膠水等味道",
@@ -2319,7 +2319,7 @@ textarea.inp{min-height:96px;resize:vertical}
   {
    "id": "R_PLAN",
    "name": "院區規劃管理中心審核",
-   "when": "大型工程 或 金額 ≧200 萬 或 影響院容類（touches 含「改變門面、大廳、走廊等公共區域的外觀」預標，工務處確認）或 需設計師提供設計圖（designMode = 委外設計 預標）",
+   "when": "大型工程 或 金額 ≧200 萬 或 影響院容類（touches 含「改變門面、大廳、走廊等公共區域，或自費服務區（如健檢、自費門診、VIP 病房）的外觀或風格」預標，工務處確認）或 需設計師提供設計圖（designMode = 委外設計 預標）",
    "result": "需經院區規劃管理中心審核後，才送核決權限主管（§5.3.7 四項觸發）。",
    "sopRef": "§5.3.7",
    "audience": "U,E"
@@ -2357,7 +2357,7 @@ textarea.inp{min-height:96px;resize:vertical}
     "不確定": [
      "*待確認"
     ],
-    "改變門面、大廳、走廊等公共區域的外觀": [
+    "改變門面、大廳、走廊等公共區域，或自費服務區（如健檢、自費門診、VIP 病房）的外觀或風格": [
      "law_interior"
     ]
    },
@@ -2483,7 +2483,7 @@ textarea.inp{min-height:96px;resize:vertical}
   },
   {
    "item": "R1 裁決：院區規劃管理中心送審觸發",
-   "change": "改回 §5.3.7 原文四項（大型、≧200 萬、影響院容、需設計圖）；刪除自加的「新空間裝修」「用到其他空間」觸發，後者改由空間調整申請處理；新增使用單位觀察題「改變門面、大廳、走廊等公共區域的外觀」預標影響院容",
+   "change": "改回 §5.3.7 原文四項（大型、≧200 萬、影響院容、需設計圖）；刪除自加的「新空間裝修」「用到其他空間」觸發，後者改由空間調整申請處理；新增使用單位觀察題「改變門面、大廳、走廊等公共區域，或自費服務區（如健檢、自費門診、VIP 病房）的外觀或風格」預標影響院容",
    "reason": "§5.3.7、§5.2.1"
   },
   {
@@ -2582,7 +2582,7 @@ const OPT_HINT = {
     '敲地板、牆面開大洞或動到柱子': '例：地板下埋水管、牆面開門洞',
     '移動或新增灑水頭、偵測器、逃生門、緊急照明': '天花板上的灑水頭、煙霧偵測器。改天花板、加隔間、新增房間時常常會動到，可能要辦消防變更',
     '改變房間用途（例：儲藏室改診間）或增減診間／病床數': '可能要向衛生局辦變更登記',
-    '改變門面、大廳、走廊等公共區域的外觀': '例：改大廳櫃台、入口門面、走廊牆面或天花造型；屬「影響院容」，會多送院區規劃管理中心審核',
+    '改變門面、大廳、走廊等公共區域，或自費服務區（如健檢、自費門診、VIP 病房）的外觀或風格': '例：改大廳櫃台、入口門面、走廊牆面或天花造型，或健檢中心、自費門診、VIP 病房的裝修風格；屬「影響院容」，會多送院區規劃管理中心審核',
     '動到廁所、坡道、扶手或電梯': '例：改無障礙廁所、加扶手',
     '動到冷氣出風口或空調機': '例：出風口移位、加裝冷氣',
     '會有明顯油漆、膠水等味道': '例：油漆、地板膠',
@@ -2749,7 +2749,7 @@ function evaluate(input) {
   if (p200 === 'yes') plan.autoTriggers.push(PT[1]);
   if (has(touches, tFace)) plan.autoTriggers.push(PT[2]);
   if (a.designMode === opt('designMode', 1)) plan.autoTriggers.push(PT[3]);
-  const reason = t => t === PT[2] ? '影響院容（改變門面、大廳、走廊等公共區域外觀）' : t === PT[3] ? '需設計師提供設計圖（委外設計）' : t;
+  const reason = t => t === PT[2] ? '影響院容（改變公共區域或自費服務區外觀）' : t === PT[3] ? '需設計師提供設計圖（委外設計）' : t;
   if (plan.autoTriggers.length) { plan.state = 'yes'; plan.basis = '因' + plan.autoTriggers.map(reason).join('、'); }
   else {
     const unk = [];
@@ -3804,7 +3804,7 @@ function renderPredict() {
       }
       case 'R_PLAN':
         el = ruleItem(r.id, d.plan.state,
-          (d.plan.state === 'yes' ? '需要。' : d.plan.state === 'unknown' ? '可能需要。' : '目前看起來不需要。') + '只有大型工程、金額 200 萬以上、改變門面／大廳／走廊等公共區域外觀，或需要設計師畫設計圖時，才要多送「院區規劃管理中心」審核；要送審時工務處會幫你送，但核准時間會拉長。用到其他單位的空間只要另外申請空間調整，不算這一關。',
+          (d.plan.state === 'yes' ? '需要。' : d.plan.state === 'unknown' ? '可能需要。' : '目前看起來不需要。') + '只有大型工程、金額 200 萬以上、改變門面／大廳／走廊等公共區域或自費服務區外觀，或需要設計師畫設計圖時，才要多送「院區規劃管理中心」審核；要送審時工務處會幫你送，但核准時間會拉長。用到其他單位的空間只要另外申請空間調整，不算這一關。',
           d.plan.state === 'yes' ? '原因：' + d.plan.basis.replace(/^因/, '') : null, U_NEED_TXT, nm);
         if (d.plan.state === 'yes') brief.push('多一關審核');
         break;
@@ -4097,7 +4097,7 @@ function renderRules() {
         case 'R_PLAN': {
           const PT = FIELDS.planTriggers.options;
           const lines = PT.slice(0, 4).map(t => t + '：' + (d.plan.autoTriggers.includes(t) ? '系統預標觸發' : '未觸發'));
-          card.append(ruleItem(r.id, d.plan.state, d.plan.state === 'no' ? '不需送審' : r.result, d.plan.basis + '。§5.3.7 四項預標（' + lines.join('；') + '）：影響院容依使用單位勾「改變門面、大廳、走廊等公共區域的外觀」預標、需設計圖依設計方式＝委外設計預標，請工務處於 E5「審核觸發條件」確認。用到單位以外空間只需空間調整申請，不觸發本項。')); break;
+          card.append(ruleItem(r.id, d.plan.state, d.plan.state === 'no' ? '不需送審' : r.result, d.plan.basis + '。§5.3.7 四項預標（' + lines.join('；') + '）：影響院容依使用單位勾「改變門面、大廳、走廊等公共區域，或自費服務區（如健檢、自費門診、VIP 病房）的外觀或風格」預標、需設計圖依設計方式＝委外設計預標，請工務處於 E5「審核觸發條件」確認。用到單位以外空間只需空間調整申請，不觸發本項。')); break;
         }
         case 'R_LAW': { const ks = Object.keys(d.law); card.append(ruleItem(r.id, ks.length ? 'yes' : 'unknown', ks.length ? FIELDS.lawItems.rows.filter(x => d.law[x.id]).map(x => x.label.split('（')[0] + '：' + d.law[x.id]).join('；') : '使用單位勾選未觸發預標', r.note, { yes: '已預標', unknown: '無預標' })); break; }
         case 'R_IC': card.append(ruleItem(r.id, d.ic.state, d.ic.state === 'yes' ? r.result : '', d.ic.basis)); break;
